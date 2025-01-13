@@ -7,11 +7,11 @@
 	<style>
 
 		body {
-			background-color: black;
+			background-color: black; /* Black background */
+			color: white; /* White text */
 			font-family: Calibri, sans-serif;
-			color: white;
 			margin: 0;
-            padding: 0;
+			padding: 0;
 			
 		}
 
@@ -155,21 +155,21 @@
 
 		li {
 			float: right;
+			margin-right: 10px;
 		}
 
 		li a {
 			display: block;
 			color: white;
 			text-align: center;
-			padding: 7px 8px;
+			padding: 8px;
 			text-decoration: none;
-			
 			
 		}
 
 		
 		li a:hover {
-			background-color: #00008B;
+			background-color: #444;
 		}
 
 
@@ -184,8 +184,7 @@
 
     <!-- Navigation Bar -->
     <ul>
-        <li><a href="y_data.html"> </a></li>
-        <li><a href="meteo_data.html">3k-Tops</a></li>
+        <li><a href="meteo_data.html">3k-Peaks</a></li>
         <li><a href="getblockstats_data.html">Getblockstats</a></li>
         <li><a href="nodes_data.html">Nodes</a></li>
         <li><a href="crypto_data.html">Crypto</a></li>
@@ -204,11 +203,12 @@
 	
 	
 	<p id="main-content">
-		Nodus Tyrolensis Stettiner: {{node2reachable}}
-		Nodus Tyrolensis Oberettes: {{node2reachable}}
-		Nodus Tyrolensis Fanes: {{node3reachable}}
-		Current BTC Network Hashrate: {{currenthashrate}} EH/sec
-		BTC / USD:		{{lastblockbitcoinprice}} 
+		Nodus Tyrolensis Stettiner: {{node1reachable}}
+		Nodus Tyrolensis Oberettes: {{node3reachable}}
+		Nodus Tyrolensis Fanes: {{node2reachable}}
+		Server CPU load: {{cpu_package_load}}
+		Server CPU temperature: {{cpu_package_temperature}}
+		Sever RAM memory load: {{memory_load_value}}
 	</p>
 
 	
