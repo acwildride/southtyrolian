@@ -58,6 +58,27 @@
                     padding: 20px;
                     background-color: #222;
                 }
+
+                .node-container {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .node-column {
+                    width: 30%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    background-color: black;
+                    overflow-x: auto;
+                }
+                pre {
+                    font-size: 15px; /* Adjust size as needed, e.g., 16px, 18px, etc. */
+                    font-family: monospace; /* Ensures it looks like code */
+                    white-space: pre-wrap; /* Allows wrapping if JSON is too wide */
+                    line-height: 1.5; /* Increases readability by adding space between lines */
+
+                }
+
             </style>
         </head>
         <body>
@@ -68,34 +89,376 @@
             <h1>Nodes Data</h1>
             <h2>Data source: Southtyrolian Nodes</h2>
 
-            <!-- Flex container to display data from three nodes -->
-            <div class="flex-container">
-
-                <!-- Node 1 Data - Left Aligned -->
-                <div class="section" style="text-align: center;">
-                    <h3>Node 1: Nodus Tyrolensis Stettiner</h3>
-                    <div class="data-item">Block Count: 880356</div>
-                    <div class="data-item">Connections: 11</div>
-                    <div class="data-item">Uptime: 57d, 17h, 2m</div>
+            <div class="node-container">
+                <!-- Node 1 -->
+                <div class="node-column" style="text-align: left;">
+                    <h3>Nodus Tyrolensis Stettiner</h3>
+                    <pre><code>
+            {
+    "name": "Nodus Tyrolensis Stettiner",
+    "blockcount": 880356,
+    "connections": 11,
+    "uptime": 125,
+    "uptimenice": "57d, 17h, 2m",
+    "blockchain_info": {
+        "chain": "main",
+        "blocks": 880356,
+        "headers": 880356,
+        "bestblockhash": "00000000000000000001f14255318d3b5b27e0b9057ba0fbfb625e9f76b0ef6c",
+        "difficulty": 110451907374649.5,
+        "time": 1737554422,
+        "mediantime": 1737550331,
+        "verificationprogress": 0.9999998953725203,
+        "initialblockdownload": false,
+        "chainwork": "0000000000000000000000000000000000000000a905144a431d0da65bd0ce07",
+        "size_on_disk": 718851983427,
+        "pruned": false,
+        "warnings": ""
+    },
+    "mempoolinfo": {
+        "loaded": true,
+        "size": 95566,
+        "bytes": 49722050,
+        "usage": 290951072,
+        "total_fee": 0.54331176,
+        "maxmempool": 2000000000,
+        "mempoolminfee": 1e-05,
+        "minrelaytxfee": 1e-05,
+        "incrementalrelayfee": 1e-05,
+        "unbroadcastcount": 0,
+        "fullrbf": true
+    },
+    "getindexinfo": {
+        "txindex": {
+            "synced": true,
+            "best_block_height": 880356
+        }
+    },
+    "getnetworkinfo": {
+        "version": 240001,
+        "subversion": "/Satoshi:24.0.1(Nodus Tyrolensis Stettiner)/",
+        "protocolversion": 70016,
+        "localservices": "0000000000000409",
+        "localservicesnames": [
+            "NETWORK",
+            "WITNESS",
+            "NETWORK_LIMITED"
+        ],
+        "localrelay": true,
+        "timeoffset": 0,
+        "networkactive": true,
+        "connections": 11,
+        "connections_in": 1,
+        "connections_out": 10,
+        "networks": [
+            {
+                "name": "ipv4",
+                "limited": false,
+                "reachable": true,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "ipv6",
+                "limited": false,
+                "reachable": true,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "onion",
+                "limited": false,
+                "reachable": true,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "i2p",
+                "limited": true,
+                "reachable": false,
+                "proxy": "",
+                "proxy_randomize_credentials": false
+            },
+            {
+                "name": "cjdns",
+                "limited": true,
+                "reachable": false,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            }
+        ],
+        "relayfee": 1e-05,
+        "incrementalfee": 1e-05,
+        "localaddresses": [],
+        "warnings": ""
+    },
+    "getmemoryinfo": {
+        "locked": {
+            "used": 256,
+            "free": 261888,
+            "total": 262144,
+            "locked": 262144,
+            "chunks_used": 1,
+            "chunks_free": 1
+        }
+    },
+    "time": "22.01.2025 - 14:01",
+    "status": "connected"
+}
+                    </code></pre>
                 </div>
 
-                <!-- Node 2 Data - Center Aligned -->
-                <div class="section" style="text-align: center;">
-                    <h3>Node 2: Nodus Tyrolensis Fanes</h3>
-                    <div class="data-item">Block Count: 880356</div>
-                    <div class="data-item">Connections: 25</div>
-                    <div class="data-item">Uptime: 57d, 17h, 25m</div>
+                <!-- Node 2 -->
+                <div class="node-column" style="text-align: left;">
+                    <h3>Nodus Tyrolensis Fanes</h3>
+                    <pre><code>
+            {
+    "name": "Nodus Tyrolensis Fanes",
+    "blockcount": 880356,
+    "connections": 25,
+    "uptime": 1511,
+    "uptimenice": "57d, 17h, 25m",
+    "blockchain_info": {
+        "chain": "main",
+        "blocks": 880356,
+        "headers": 880356,
+        "bestblockhash": "00000000000000000001f14255318d3b5b27e0b9057ba0fbfb625e9f76b0ef6c",
+        "difficulty": 110451907374649.5,
+        "time": 1737554422,
+        "mediantime": 1737550331,
+        "verificationprogress": 0.9999998953725203,
+        "initialblockdownload": false,
+        "chainwork": "0000000000000000000000000000000000000000a905144a431d0da65bd0ce07",
+        "size_on_disk": 718829922539,
+        "pruned": false,
+        "warnings": ""
+    },
+    "mempoolinfo": {
+        "loaded": true,
+        "size": 96150,
+        "bytes": 50042445,
+        "usage": 292557392,
+        "total_fee": 0.54649293,
+        "maxmempool": 2000000000,
+        "mempoolminfee": 1e-05,
+        "minrelaytxfee": 1e-05,
+        "incrementalrelayfee": 1e-05,
+        "unbroadcastcount": 0,
+        "fullrbf": true
+    },
+    "getindexinfo": {
+        "txindex": {
+            "synced": true,
+            "best_block_height": 880356
+        }
+    },
+    "getnetworkinfo": {
+        "version": 240001,
+        "subversion": "/Satoshi:24.0.1(Nodus Tyrolensis Fanes)/",
+        "protocolversion": 70016,
+        "localservices": "0000000000000409",
+        "localservicesnames": [
+            "NETWORK",
+            "WITNESS",
+            "NETWORK_LIMITED"
+        ],
+        "localrelay": true,
+        "timeoffset": 0,
+        "networkactive": true,
+        "connections": 25,
+        "connections_in": 15,
+        "connections_out": 10,
+        "networks": [
+            {
+                "name": "ipv4",
+                "limited": false,
+                "reachable": true,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "ipv6",
+                "limited": false,
+                "reachable": true,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "onion",
+                "limited": false,
+                "reachable": true,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "i2p",
+                "limited": true,
+                "reachable": false,
+                "proxy": "",
+                "proxy_randomize_credentials": false
+            },
+            {
+                "name": "cjdns",
+                "limited": true,
+                "reachable": false,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            }
+        ],
+        "relayfee": 1e-05,
+        "incrementalfee": 1e-05,
+        "localaddresses": [
+            {
+                "address": "ejjqu66hnel4le2dovyopmrsshs7eec43kuh6zyk3bqzzqesx4ptusqd.onion",
+                "port": 8333,
+                "score": 4
+            }
+        ],
+        "warnings": ""
+    },
+    "getmemoryinfo": {
+        "locked": {
+            "used": 256,
+            "free": 261888,
+            "total": 262144,
+            "locked": 262144,
+            "chunks_used": 1,
+            "chunks_free": 1
+        }
+    },
+    "time": "22.01.2025 - 14:01",
+    "status": "connected"
+}
+                    </code></pre>
                 </div>
 
-                <!-- Node 3 Data - Right Aligned -->
-                <div class="section" style="text-align: center;">
-                    <h3>Node 3: Nodus Tyrolensis Oberettes</h3>
-                    <div class="data-item">Block Count: 880356</div>
-                    <div class="data-item">Connections: 14</div>
-                    <div class="data-item">Uptime: 0d, 7h, 43m</div>
+                <!-- Node 3 -->
+                <div class="node-column" style="text-align: left;">
+                    <h3>Nodus Tyrolensis Oberettes</h3>
+                    <pre><code>UU9UU36
+            {
+    "name": "Nodus Tyrolensis Oberettes",
+    "blockcount": 880356,
+    "connections": 14,
+    "uptime": 2626,
+    "uptimenice": "0d, 7h, 43m",
+    "blockchain_info": {
+        "chain": "main",
+        "blocks": 880356,
+        "headers": 880356,
+        "bestblockhash": "00000000000000000001f14255318d3b5b27e0b9057ba0fbfb625e9f76b0ef6c",
+        "difficulty": 110451907374649.5,
+        "time": 1737554422,
+        "mediantime": 1737550331,
+        "verificationprogress": 0.9999997596522048,
+        "initialblockdownload": false,
+        "chainwork": "0000000000000000000000000000000000000000a905144a431d0da65bd0ce07",
+        "size_on_disk": 718757902561,
+        "pruned": false,
+        "warnings": []
+    },
+    "mempoolinfo": {
+        "loaded": true,
+        "size": 11738,
+        "bytes": 11043497,
+        "usage": 56198816,
+        "total_fee": 0.13845925,
+        "maxmempool": 2000000000,
+        "mempoolminfee": 1e-05,
+        "minrelaytxfee": 1e-05,
+        "incrementalrelayfee": 1e-05,
+        "unbroadcastcount": 0,
+        "fullrbf": true
+    },
+    "getindexinfo": {
+        "txindex": {
+            "synced": true,
+            "best_block_height": 880356
+        }
+    },
+    "getnetworkinfo": {
+        "version": 280000,
+        "subversion": "/Satoshi:28.0.0(Nodus Tyrolensis Oberettes)/",
+        "protocolversion": 70016,
+        "localservices": "0000000000000c09",
+        "localservicesnames": [
+            "NETWORK",
+            "WITNESS",
+            "NETWORK_LIMITED",
+            "P2P_V2"
+        ],
+        "localrelay": true,
+        "timeoffset": 0,
+        "networkactive": true,
+        "connections": 14,
+        "connections_in": 4,
+        "connections_out": 10,
+        "networks": [
+            {
+                "name": "ipv4",
+                "limited": false,
+                "reachable": true,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "ipv6",
+                "limited": false,
+                "reachable": true,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "onion",
+                "limited": false,
+                "reachable": true,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "i2p",
+                "limited": true,
+                "reachable": false,
+                "proxy": "",
+                "proxy_randomize_credentials": false
+            },
+            {
+                "name": "cjdns",
+                "limited": true,
+                "reachable": false,
+                "proxy": "127.0.0.1:9050",
+                "proxy_randomize_credentials": true
+            }
+        ],
+        "relayfee": 1e-05,
+        "incrementalfee": 1e-05,
+        "localaddresses": [
+            {
+                "address": "55xaymew2oivicsmyejqrtuk7iqptoyybuopzdiydxgpmzbhacagtbyd.onion",
+                "port": 8333,
+                "score": 4
+            }
+        ],
+        "warnings": []
+    },
+    "getmemoryinfo": {
+        "locked": {
+            "used": 464,
+            "free": 261680,
+            "total": 262144,
+            "locked": 262144,
+            "chunks_used": 4,
+            "chunks_free": 2
+        }
+    },
+    "time": "22.01.2025 - 14:01",
+    "status": "connected"
+}
+                    </code></pre>
                 </div>
-
             </div>
+
+
 
             <div class="footer">
                 <a href="nodes_data.html">Back</a>
