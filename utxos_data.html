@@ -3,7 +3,7 @@
         <html>
 
         <head>
-            <title>acwildride - UTXOs</title>
+            <title>acwildride - Index</title>
                 
             <style>
 
@@ -22,136 +22,54 @@
                     right: 0px;
                     width: 100%;
                     height: 100%;
-                    /* background-image: url(https://images.pexels.com/photos/2565420/pexels-photo-2565420.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);*/
-                    /* background-image: url('images/Eiszapfen-M2000.jpeg'); */
                     background-image: url('images/special/schneeberg_mining.jpg');
                     background-position: center center;
-                    /*background-position: 150% 0%; alternative to right center*/
                     background-repeat: no-repeat;
                 }
 
-                .container {
-                    display: flex;
-                }
-                
                 #plotly-figure1 {
                     position: absolute;
                     height: 100%;
-                    width: 85%; /* Adjust the width as needed */
-                    margin-top: 40px; /* Add space above the Plotly figure */
-                    margin-bottom: 0px; /* Add a large margin to push content down */
+                    width: 85%;
+                    margin-top: 40px;
                     margin-left: 590px;
                     margin-right: 50px;
                 }
-                
-                #plotly-figure2 {
-                    position: absolute;
-                    height: 100%;
-                    width: 65%; /* Adjust the width as needed */
-                    margin-top: 500px; /* Add space above the Plotly figure */
-                    margin-bottom: 0px; /* Add a large margin to push content down */
-                    margin-left: 590px;
-                    margin-right: 50px;
-                }
-
-                #plotly-figure3 {
-                    position: absolute;
-                    height: 100%;
-                    width: 65%; /* Adjust the width as needed */
-                    margin-top: 975px; /* Add space above the Plotly figure */
-                    margin-bottom: 0px; /* Add a large margin to push content down */
-                    margin-left: 590px;
-                    margin-right: 50px;
-                }
-
 
                 h1 {
                     position: absolute;
                     top: 70px;
                     left: 30px;
-                    margin-top: -10px;
                     font-size: 52px;
                     color: white;
                 }
 
-                h2 {
-                    position: absolute;
-                    top: 200px;
-                    left: 100px;
-                    margin-top: 0px;
-                    font-size: 24px;
-                    color: white;
-                    line-height: 1.5;
-                    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
-                }
-
-
-                p#main-content {
-                    position: absolute;
-                    bottom: 50px;
-                    left: 20px;
-                    font-family: Calibri, sans-serif;
-                    color: white;
-                    font-size: 14px;
-                    color: white;
-                    line-height: 1.5;
-                    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
-                }
-
-                #down_right{
-                    position: fixed;
-                    bottom: 5px;
-                    right: 30px;
-                    font-size: 14px;
-                    color: white;
-                    line-height: 1.5;
-                    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
-                }
-            
-                #down_left{
+                p#down_left {
                     position: fixed;
                     bottom: 30px;
                     left: 30px;
                     font-size: 14px;
                     color: white;
                     line-height: 1.5;
-                    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+                    white-space: pre-wrap;
+                    background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent black */
+                    padding: 10px 50px 10px 1px;  /* Top: px, Right: px, Bottom: px, Left: px */
+                    border-radius: 50px;
+                    border: 1px solid green; /* Highlight the container bounds */
                 }
 
-
-                #upright {
-                    position: absolute;
-                    top: 0px;
-                    right: 0px;
-                    font-size: 14px;
-                    color: gray;
-                    line-height: 1.5;
-                    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
-                }
-
-                #upleft {
-                    position: fixed;
-                    top: -10px;
-                    left: -20px;
-                    font-size: 14px;
-                    color: gray;
-                    line-height: 1.5;
-                    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
-                }
-
-                ul {
+                 ul {
                     list-style-type: none;
                     margin: 0;
                     padding: 0;
                     overflow: hidden;
-                    /* background-color: #333;*/
                     background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent black */
+                    /* background-color: #333;*/
                     position: relative;
                     padding-left: 30px;
                     padding-right: 30px;
                 }
 
-                
 
                 li {
                     float: right;
@@ -164,14 +82,11 @@
                     text-align: center;
                     padding: 8px;
                     text-decoration: none;
-                    
                 }
-                
+
                 li a:hover {
                     background-color: #444;
                 }
-
-
 
             </style>
 
@@ -179,7 +94,6 @@
 
         <body>
             <div class="background-container"></div>
-
 
             <!-- Navigation Bar -->
             <ul>
@@ -196,28 +110,15 @@
                 <li><a href="index.html">Home</a></li>
             </ul>
 
-            
-            <div class="container">
+            <h1 id="page-title">Site Under Construction...</h1>
 
-            <h1 id="page-title">UTXOs</h1>
-            <h2 id="page-subtitle">Site Under Construction...</h2>
-            
-            
-            <p id="main-content">
- 
-
-                Last updated: 23:01:2025 - 01:13
+            <p id="down_left">
+                UTXOs: Enormous calculations to decrypt every txs fron blockchain take a lot of time...
             </p>
-
-            
-
-
-            
-
-            </div>
 
         </body>
 
         </html>
 
-    
+
+        
