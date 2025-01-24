@@ -4,7 +4,8 @@
 
         <head>
             <title>acwildride - Index</title>
-                
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
 
                 body {
@@ -22,7 +23,7 @@
                     right: 0px;
                     width: 100%;
                     height: 100%;
-                    background-image: url('images/background2 (1).jpg');
+                    background-image: url('images/background2 (20).jpg');
                     background-position: center center;
                     background-repeat: no-repeat;
                 }
@@ -88,6 +89,36 @@
                     background-color: #444;
                 }
 
+                /* Submenu styles */
+                .submenu {
+                    display: none; /* Hidden by default */
+                    position: absolute;
+                    top: 100%; /* Below the parent item */
+                    right: 0; /* Align to the parent item */
+                    background-color: rgba(0, 0, 0, 0.5);
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                .submenu li {
+                    float: none; /* Reset float for submenu items */
+                }
+
+                .submenu li a {
+                    padding: 8px;
+                    text-align: left; /* Align text to the left */
+                }
+
+                .submenu li a:hover {
+                    background-color: #666;
+                }
+
+                /* Show submenu when parent is clicked */
+                .expand .submenu {
+                    display: block;
+                }
+                
             </style>
 
         </head>
@@ -106,9 +137,24 @@
                 <li><a href="bitcoin_data.html">BTC</a></li>
                 <li><a href="utxos_data.html">UTXOs</a></li>
                 <li><a href="getblockstats_data.html">Getblockstats</a></li>
-                <li><a href="nodes_data.html">Nodes</a></li>
+                <li>
+                    <a href="nodes_data.html" onclick="toggleSubmenu(event)">Nodes</a>
+                    <ul class="submenu">
+                        <li><a href="node_data.html">Node 1</a></li>
+                        <li><a href="node2_data.html">Node 2</a></li>
+                        <li><a href="node3_data.html">Node 3</a></li>
+                    </ul>
+                </li>
                 <li><a href="index.html">Home</a></li>
             </ul>
+            
+            <script>
+                function toggleSubmenu(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const parent = event.target.parentElement; // Get the parent <li>
+                    parent.classList.toggle('expand'); // Toggle the 'expand' class
+                }
+            </script>
 
             <h1 id="page-title">Southtyrolian Nodes and Data Visualization</h1>
 
@@ -117,14 +163,14 @@
                 Nodus Tyrolensis Fanes: connected
                 Nodus Tyrolensis Oberettes: connected
 
-                Mempool Fees sats/vbyte: 1.19 - 1.33 - 3.0
-                ETH Gas GWEI: 6.93 - 6.98 - 8.72
+                Mempool Fees sats/vbyte: 2,5 - 2,5 - 2,5
+                Network: Difficulty 110.5 T, Hashrate 713.8 EH/s
                 
-                Server CPU load: 46,1 %
-                Server RAM memory load: 76,5 %
-                Server CPU temperature: 63,0 °C
+                Server CPU load: 79,1 %
+                Server RAM memory load: 99,0 %
+                Server CPU temperature: 69,0 °C
 
-                Last updated: 23:01:2025 - 13:29
+                Last updated: 24:01:2025 - 13:06
             </p>
 
         </body>
