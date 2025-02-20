@@ -15,27 +15,6 @@
                     padding: 0;  
                 }
 
-                .background-container {
-                    position: absolute;
-                    background-size: 100%;
-                    top: -5px;
-                    right: 0px;
-                    width: 100%;
-                    height: 100%;
-                    background-image: url('images/IMG_0934.JPEG');
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                }
-
-                #plotly-figure1 {
-                    position: absolute;
-                    height: 100%;
-                    width: 85%;
-                    margin-top: 40px;
-                    margin-left: 590px;
-                    margin-right: 50px;
-                }
-
                 h1 {
                     position: absolute;
                     top: 70px;
@@ -44,6 +23,53 @@
                     color: white;
                 }
 
+                .background-container {
+                    position: absolute;
+                    background-size: 100%;
+                    top: -5px;
+                    right: 0px;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url('images/GPTempDownload(20).JPEG');
+                    /* background-size: cover;  Cover sorgt dafür, dass das ganze Bild angezeigt wird */
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    pointer-events: none; /* Blockiert keine Mausinteraktionen */
+                    z-index: -1; /* Stelle sicher, dass es im Hintergrund bleibt */
+                }
+
+                .ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent black */
+                    padding-left: 30px;
+                    padding-right: 30px;
+                }
+                .li {
+                    float: right;
+                    margin-right: 10px;
+                }
+                .li:hover .sub-menu {
+                    display: block;
+                }
+                .sub-menu {
+                    display: none;
+                    list-style-type: none;
+                    padding-left: 15px;
+                }
+                a {
+                    color: white; /* White links */
+                    text-decoration: none; /* Remove underline */
+                    padding: 8px; /* Padding around links */
+                    display: inline-block; /* Ensures padding works */
+                }
+
+                a:hover {
+                    background-color: #444; /* Darken on hover */
+                }
+   
                 p#down_left {
                     position: fixed;
                     bottom: 30px;
@@ -55,60 +81,137 @@
                     background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent black */
                     padding: 10px 50px 10px 1px;  /* Top: px, Right: px, Bottom: px, Left: px */
                     border-radius: 50px;
-                    border: 1px solid green; /* Highlight the container bounds */
+                    border: 1px solid green;  Highlight the container bounds 
                 }
-
-                 ul {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    overflow: hidden;
-                    background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent black */
-                    /* background-color: #333;*/
-                    position: relative;
-                    padding-left: 30px;
-                    padding-right: 30px;
-                }
-
-
-                li {
-                    float: right;
-                    margin-right: 10px;
-                }
-
-                li a {
-                    display: block;
-                    color: white;
-                    text-align: center;
-                    padding: 8px;
-                    text-decoration: none;
-                }
-
-                li a:hover {
-                    background-color: #444;
-                }
-
+               
             </style>
+
+            <script>
+                function toggleSubmenu(id) {
+                    var submenu = document.getElementById(id);
+                    if (submenu.style.display === "none") {
+                        submenu.style.display = "block";
+                    } else {
+                        submenu.style.display = "none";
+                    }
+                }
+            </script>
 
         </head>
 
         <body>
             <div class="background-container"></div>
 
-            <!-- Navigation Bar -->
-            <ul>
-                <li><a href="meteo_data.html">3k-Peaks</a></li>
-                <li><a href="eurostat_data.html">ES</a></li>
-                <li><a href="bis_data.html">BIS</a></li>
-                <li><a href="treasury_data.html">UST</a></li>
-                <li><a href="ecb_data_1.html">ECB</a></li>
-                <li><a href="fred_data.html">FED</a></li>
-                <li><a href="altcoins_data_1.html">ETH</a></li>
-                <li><a href="bitcoin_data.html">BTC</a></li>
-                <li><a href="utxos_data.html">UTXOs</a></li>
-                <li><a href="getblockstats_data.html">Getblockstats</a></li>
-                <li><a href="nodes_data.html">Nodes</a></li>
-                <li><a href="index.html">Home</a></li>
+            
+            <ul class="ul">
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-3k')">WS</a>
+                    <ul id="submenu-3k" class="sub-menu">
+                        <li><a href="meteo_data.html">3k-Peaks</a></li>
+                        <li><a href="meteo_data_2.html">Etsch Q</></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-ES')">ES</a>
+                    <ul id="submenu-ES" class="sub-menu">
+                        <li><a href="eurostat_data.html">Dataset 1</a></li>
+                        <li><a href="eurostat_data_2.html">Dataset 2</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-bis')">BIS</a>
+                    <ul id="submenu-bis" class="sub-menu">
+                        <li><a href="bis_data.html">BIS Data</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-ust')">UST</a>
+                    <ul id="submenu-ust" class="sub-menu">
+                        <li><a href="treasury_data.html">Treasury</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-ecb')">ECB</a>
+                    <ul id="submenu-ecb" class="sub-menu">
+                        <li><a href="ecb_data_1.html">Central Bank Data</a></li>
+                        <li><a href="ecb_data_2.html">GDP and Dept</a></li>
+                        <li><a href="ecb_data_3.html">Employment</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-fed')">FED</a>
+                    <ul id="submenu-fed" class="sub-menu">
+                        <li><a href="fred_data.html.html">Central Bank</a></li>
+                        <li><a href="fred_data.html_2.html">Dept and Banks</a></li>
+                        <li><a href="fred_data.html_3.html">Economic Data</a></li>
+                        <li><a href="fred_data.html_4.html">Wealth Distribution - Totals</a></li>
+                        <li><a href="fred_data.html_5.html">Wealth Distribution - Assets</a></li>
+                        <li><a href="fred_data.html_6.html">Wealth Distribution - Liabilities</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-eth')">ETH</a>
+                    <ul id="submenu-eth" class="sub-menu">
+                        <li><a href="altcoins_data_1.html">Ethereum</a></li>
+                        <li><a href="altcoins_data_2.html">Uniswap</a></li>
+                        <li><a href="altcoins_data_3.html">Swissborg</a></li>
+                        <li><a href="altcoins_data_4.html">Chilliz</a></li>
+                        <li><a href="altcoins_data_5.html">Utrust</a></li>
+                        <li><a href="altcoins_data_6.html">Maker</a></li>
+                        <li><a href="altcoins_data_7.html">OcamFi</a></li>
+                        <li><a href="altcoins_data_8.html">Ternoa</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-btc')">BTC</a>
+                    <ul id="submenu-btc" class="sub-menu">
+                        <li><a href="bitcoin_data">Bitcoin Data</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-utxos')">UTXOs</a>
+                    <ul id="submenu-utxos" class="sub-menu">
+                        <li><a href="utxos_data.html">Addresses</a></li>
+                        <li><a href="utxos_data_2.html">Market and Network</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-blockstats')">Blockstats</a>
+                    <ul id="submenu-blockstats" class="sub-menu">
+                        <li><a href="getblockstats_data.html">Txs and Fees</a></li>
+                        <li><a href="getblockstats_data_2.html">Segwit</a></li>
+                        <li><a href="getblockstats_data_3.html">Size and Weight</a></li>
+                        <li><a href="getblockstats_data_4.html">UTXO Set</a></li>
+                        <li><a href="getblockstats_data_5.html">Tx Size</a></li>
+                        <li><a href="getblockstats_data_6.html">Subsidy and Txs Value</a></li>
+                        <li><a href="getblockstats_data_7.html">Avg Tx Size</a></li>
+                        <li><a href="getblockstats_data_8.html">Avg and Median Fee</a></li>
+                        <li><a href="getblockstats_data_9.html">Max and Min Fee</a></li>
+                        <li><a href="getblockstats_data_10.html">Avg Feerate</a></li>
+                        <li><a href="getblockstats_data_11.html">Avg Tx Size</a></li>
+                        <li><a href="getblockstats_data_12.html">Ins and Outs</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-nodes')">Nodes</a>
+                    <ul id="submenu-nodes" class="sub-menu">
+                        <li><a href="nodes_data.html">Mempool</a></li>
+                        <li><a href="nodes_data_2.html">Network</a></li>
+                        <li><a href="nodes_data_3.html">Nodes Details</a></li>
+                        <li><a href="mining_data.html">Mining</a></li>
+                    </ul>
+                </li>
+                <li class="li"><a href="index.html">Home</a></li>
             </ul>
 
             <h1 id="page-title">Southtyrolian Nodes and Data Visualization</h1>
@@ -118,14 +221,15 @@
                 Nodus Tyrolensis Fanes: connected
                 Nodus Tyrolensis Oberettes: connected
 
-                Mempool Fees sats/vbyte: 2 - 3 - 6
-                Network: Difficulty 114.2 T, Hashrate 709.4 EH/s
+                Transactions in Mempool: 55791
+                Mempool Fees sats/vbyte: 2 - 2 - 3
+                Network: Difficulty 114.2 T, Hashrate 698.1 EH/s
                 
-                Server CPU load: 58,0 %
-                Server RAM memory load: 47,7 %
+                Server CPU load: 49,2 %
+                Server RAM memory load: 41,2 %
                 Server CPU temperature: 67,0 °C
 
-                Last updated: 20.02.2025 - 17:20
+                Last updated: 20.02.2025 - 18:06
             </p>
 
         </body>
