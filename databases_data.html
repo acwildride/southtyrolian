@@ -1,0 +1,1305 @@
+
+        <html>
+        <head>
+            <title>Databases - Details</title>
+            <style>
+                body {
+                    background-color: black;
+                    color: white;
+                    font-family: Calibri, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                h1 {
+                    text-align: left;
+                    font-size: 2em;
+                    margin-top: 20px;
+                    margin-left: 70px;
+                }
+
+                h2 {
+                    text-align: left;
+                    margin-top: 20px;
+                    margin-left: 70px;
+                    font-size: 12px;
+                    color: white;
+                    line-height: 1.5;
+                    white-space: pre-wrap;
+                }
+
+                .flex-container {
+                    display: flex;
+                    justify-content: space-between;  /* This will space the items evenly between left, center, and right */
+                    padding: 20px;
+                }
+
+                .section {
+                    width: 30%;  /* Each section takes up 30% of the width */
+                    padding: 20px;
+                    border: 1px solid #555;
+                    border-radius: 8px;
+                    background-color: #333;
+                }
+
+                .section h3 {
+                    font-size: 1.5em;
+                    margin-bottom: 10px;
+                    text-align: center;
+                }
+
+                .data-item {
+                    margin: 5px 0;
+                }
+
+                .footer {
+                    margin-top: auto;
+                    text-align: center;
+                    padding: 20px;
+                    background-color: #222;
+                }
+
+                .node-container {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .node-column {
+                    width: 30%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    background-color: black;
+                    overflow-x: auto;
+                }
+                pre {
+                    font-size: 15px; /* Adjust size as needed, e.g., 16px, 18px, etc. */
+                    font-family: monospace; /* Ensures it looks like code */
+                    white-space: pre-wrap; /* Allows wrapping if JSON is too wide */
+                    line-height: 1.5; /* Increases readability by adding space between lines */
+
+                }
+
+                .ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    padding-left: 30px;
+                    padding-right: 30px;
+                }
+                .li {
+                    float: right;
+                    margin-right: 10px;
+                }
+                .li:hover .sub-menu {
+                    display: block;
+                }
+                .sub-menu {
+                    display: none;
+                    list-style-type: none;
+                    padding-left: 15px;
+                }
+                a {
+                    color: white; /* White links */
+                    text-decoration: none; /* Remove underline */
+                    padding: 8px; /* Padding around links */
+                    display: inline-block; /* Ensures padding works */
+                }
+
+                a:hover {
+                    background-color: #444; /* Darken on hover */
+                }
+                .footer {
+                    margin-top: auto; /* Pushes the footer to the bottom of the page */
+                    text-align: center;
+                    padding: 20px;
+                    background-color: #222; /* Dark background for the footer */
+                }
+
+                .footer a {
+                    margin: 0 10px; /* Add spacing between links */
+                }
+                
+            </style>
+            <script>
+                function toggleSubmenu(id) {
+                    var submenu = document.getElementById(id);
+                    if (submenu.style.display === "none") {
+                        submenu.style.display = "block";
+                    } else {
+                        submenu.style.display = "none";
+                    }
+                }
+            </script>
+        </head>
+        <body>
+            <ul class="ul">
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-3k')">WS</a>
+                    <ul id="submenu-3k" class="sub-menu">
+                        <li><a href="meteo_data.html">3k-Peaks</a></li>
+                        <li><a href="meteo_data_2.html">Etsch Q</></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-ES')">ES</a>
+                    <ul id="submenu-ES" class="sub-menu">
+                        <li><a href="eurostat_data.html">Dataset 1</a></li>
+                        <li><a href="eurostat_data_2.html">Dataset 2</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-bis')">BIS</a>
+                    <ul id="submenu-bis" class="sub-menu">
+                        <li><a href="bis_data.html">BIS Data</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-ust')">UST</a>
+                    <ul id="submenu-ust" class="sub-menu">
+                        <li><a href="treasury_data.html">Treasury</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-ecb')">ECB</a>
+                    <ul id="submenu-ecb" class="sub-menu">
+                        <li><a href="ecb_data_1.html">Central Bank Data</a></li>
+                        <li><a href="ecb_data_2.html">GDP and Dept</a></li>
+                        <li><a href="ecb_data_3.html">Employment</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-fed')">FED</a>
+                    <ul id="submenu-fed" class="sub-menu">
+                        <li><a href="fred_data.html">Central Bank</a></li>
+                        <li><a href="fred_data_2.html">Dept and Banks</a></li>
+                        <li><a href="fred_data_3.html">Economic Data</a></li>
+                        <li><a href="fred_data_4.html">Wealth Distribution - Totals</a></li>
+                        <li><a href="fred_data_5.html">Wealth Distribution - Assets</a></li>
+                        <li><a href="fred_data_6.html">Wealth Distribution - Liabilities</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-eth')">ETH</a>
+                    <ul id="submenu-eth" class="sub-menu">
+                        <li><a href="altcoins_data_1.html">Ethereum</a></li>
+                        <li><a href="altcoins_data_2.html">Uniswap</a></li>
+                        <li><a href="altcoins_data_3.html">Swissborg</a></li>
+                        <li><a href="altcoins_data_4.html">Chilliz</a></li>
+                        <li><a href="altcoins_data_5.html">Utrust</a></li>
+                        <li><a href="altcoins_data_6.html">Maker</a></li>
+                        <li><a href="altcoins_data_7.html">OcamFi</a></li>
+                        <li><a href="altcoins_data_8.html">Ternoa</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-btc')">BTC</a>
+                    <ul id="submenu-btc" class="sub-menu">
+                        <li><a href="bitcoin_data">Bitcoin Data</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-utxos')">UTXOs</a>
+                    <ul id="submenu-utxos" class="sub-menu">
+                        <li><a href="utxos_data.html">Addresses</a></li>
+                        <li><a href="utxos_data_2.html">Market and Network</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-blockstats')">Blockstats</a>
+                    <ul id="submenu-blockstats" class="sub-menu">
+                        <li><a href="getblockstats_data.html">Txs and Fees</a></li>
+                        <li><a href="getblockstats_data_2.html">Segwit</a></li>
+                        <li><a href="getblockstats_data_3.html">Size and Weight</a></li>
+                        <li><a href="getblockstats_data_4.html">UTXO Set</a></li>
+                        <li><a href="getblockstats_data_5.html">Tx Size</a></li>
+                        <li><a href="getblockstats_data_6.html">Subsidy and Txs Value</a></li>
+                        <li><a href="getblockstats_data_7.html">Avg Tx Size</a></li>
+                        <li><a href="getblockstats_data_8.html">Avg and Median Fee</a></li>
+                        <li><a href="getblockstats_data_9.html">Max and Min Fee</a></li>
+                        <li><a href="getblockstats_data_10.html">Avg Feerate</a></li>
+                        <li><a href="getblockstats_data_11.html">Avg Tx Size</a></li>
+                        <li><a href="getblockstats_data_12.html">Ins and Outs</a></li>
+                    </ul>
+                </li>
+
+                <li class="li">
+                    <a href="#" onclick="toggleSubmenu('submenu-nodes')">Nodes</a>
+                    <ul id="submenu-nodes" class="sub-menu">
+                        <li><a href="nodes_data.html">Mempool</a></li>
+                        <li><a href="nodes_data_2.html">Network</a></li>
+                        <li><a href="nodes_data_3.html">Nodes Details</a></li>
+                        <li><a href="mining_data.html">Mining</a></li>
+                        <li><a href="hardware_data.html">Server</a></li>
+                        <li><a href="databases_data.html">Databases</a></li>
+                    </ul>
+                </li>
+                <li class="li"><a href="index.html">Home</a></li>
+            </ul>
+
+            <h1>Databases - Details</h1>
+            <h2>Data source: Southtyrolian Server</h2>
+            <pre>{
+    &quot;GetBlockStats&quot;: {
+        &quot;Highest Block&quot;: 892724,
+        &quot;Last Entry Time&quot;: &quot;16.04.2025 22:00&quot;,
+        &quot;Status&quot;: &quot;not up to date&quot;,
+        &quot;Missing Blocks&quot;: 2,
+        &quot;Estimated Update Time&quot;: &quot;0d 00h 00m 00s&quot;,
+        &quot;BPS Speed&quot;: &quot;10.57&quot;,
+        &quot;Check Incremental Order At&quot;: 892724,
+        &quot;Check Integrity At&quot;: 891016,
+        &quot;Check Consistency At&quot;: 892724,
+        &quot;Errors&quot;: &quot;No errors found&quot;
+    },
+    &quot;GetBlock&quot;: {
+        &quot;Highest Block&quot;: 892722,
+        &quot;Last Entry Time&quot;: &quot;16.04.2025 21:46&quot;,
+        &quot;Status&quot;: &quot;not up to date&quot;,
+        &quot;Missing Blocks&quot;: 4,
+        &quot;Estimated Update Time&quot;: &quot;0d 00h 00m 00s&quot;,
+        &quot;BPS Speed&quot;: &quot;9.49&quot;,
+        &quot;Check Incremental Order At&quot;: 892722,
+        &quot;Check Integrity At&quot;: 891016,
+        &quot;Check Consistency At&quot;: 892722,
+        &quot;Errors&quot;: &quot;No errors found&quot;
+    },
+    &quot;Transactions&quot;: {
+        &quot;Highest Block&quot;: 892722,
+        &quot;Last Entry Time&quot;: &quot;16.04.2025 21:46&quot;,
+        &quot;Status&quot;: &quot;not up to date&quot;,
+        &quot;Missing Blocks&quot;: 4,
+        &quot;Estimated Update Time&quot;: &quot;0d 00h 06m 40s&quot;,
+        &quot;BPS Speed&quot;: &quot;0.01&quot;,
+        &quot;Completeness Check Height&quot;: 892722,
+        &quot;Errors&quot;: &quot;No errors found&quot;
+    },
+    &quot;Inputs&quot;: {
+        &quot;Highest Block&quot;: 892722,
+        &quot;Last Entry Time&quot;: &quot;16.04.2025 21:46&quot;,
+        &quot;Completeness Check Height&quot;: 892722,
+        &quot;Errors&quot;: &quot;No errors found&quot;
+    },
+    &quot;Outputs&quot;: {
+        &quot;Highest Block&quot;: 892722,
+        &quot;Last Entry Time&quot;: &quot;16.04.2025 21:46&quot;,
+        &quot;Completeness Check Height&quot;: 892722,
+        &quot;Errors&quot;: &quot;No errors found&quot;
+    },
+    &quot;GetPeerInfo&quot;: {
+        &quot;Total Peers&quot;: 19220,
+        &quot;Double Peers Detected&quot;: &quot;No double entries found&quot;,
+        &quot;Errors&quot;: &quot;No errors found&quot;
+    },
+    &quot;Hashrate&quot;: {
+        &quot;Highest Block&quot;: 892605,
+        &quot;Last Entry Time&quot;: &quot;15.04.2025&quot;,
+        &quot;Status&quot;: &quot;not up to date&quot;,
+        &quot;Missing Blocks&quot;: 121,
+        &quot;Highest Date&quot;: &quot;2025-04-15&quot;,
+        &quot;Missing Days&quot;: &quot;No missing day found&quot;,
+        &quot;Estimated Update Time&quot;: &quot;0d 00h 00m 00s&quot;,
+        &quot;BPS Speed&quot;: &quot;509.70&quot;,
+        &quot;Missing Days Check Height&quot;: 892605,
+        &quot;Errors&quot;: &quot;No errors found&quot;
+    },
+    &quot;Current BPS Speeds&quot;: {
+        &quot;GetBlockStats&quot;: &quot;10.57&quot;,
+        &quot;GetBlock&quot;: &quot;9.49&quot;,
+        &quot;Transactions&quot;: &quot;0.01&quot;,
+        &quot;Hashrate&quot;: &quot;509.70&quot;
+    },
+    &quot;PostgresSQL&quot;: {
+        &quot;Serverapp1_blockspersecond&quot;: {
+            &quot;sequential_scans&quot;: 83,
+            &quot;rows_read&quot;: 332,
+            &quot;index_scans&quot;: 34,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;24 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_blockspersecond_pkey&quot;,
+                    &quot;index_scans&quot;: 34,
+                    &quot;index_reads&quot;: 34,
+                    &quot;index_fetches&quot;: 34
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 351,
+                &quot;cache_hits&quot;: 348,
+                &quot;hit_ratio&quot;: &quot;98.00&quot;
+            }
+        },
+        &quot;Serverapp1_checkdatabases&quot;: {
+            &quot;sequential_scans&quot;: 424,
+            &quot;rows_read&quot;: 5088,
+            &quot;index_scans&quot;: 152,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;176 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_checkdatabases_test4_pkey&quot;,
+                    &quot;index_scans&quot;: 152,
+                    &quot;index_reads&quot;: 152,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 9784,
+                &quot;cache_hits&quot;: 9764,
+                &quot;hit_ratio&quot;: &quot;99.00&quot;
+            }
+        },
+        &quot;Serverapp1_ckpoolminerdata&quot;: {
+            &quot;sequential_scans&quot;: 64,
+            &quot;rows_read&quot;: 348176,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 16,
+            &quot;table_size&quot;: &quot;8416 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_ckpoolminerdata_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 34884,
+                &quot;cache_hits&quot;: 33830,
+                &quot;hit_ratio&quot;: &quot;96.00&quot;
+            }
+        },
+        &quot;Serverapp1_database_of_plots&quot;: {
+            &quot;sequential_scans&quot;: 1257,
+            &quot;rows_read&quot;: 587019,
+            &quot;index_scans&quot;: 260,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;576 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_database_of_plots_pkey&quot;,
+                    &quot;index_scans&quot;: 260,
+                    &quot;index_reads&quot;: 260,
+                    &quot;index_fetches&quot;: 260
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 91584,
+                &quot;cache_hits&quot;: 91517,
+                &quot;hit_ratio&quot;: &quot;99.00&quot;
+            }
+        },
+        &quot;Serverapp1_ethereum_gas_tracker&quot;: {
+            &quot;sequential_scans&quot;: 5,
+            &quot;rows_read&quot;: 13930,
+            &quot;index_scans&quot;: 9,
+            &quot;live_rows&quot;: 5,
+            &quot;table_size&quot;: &quot;488 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_ethereum_gas_tracker_pkey&quot;,
+                    &quot;index_scans&quot;: 9,
+                    &quot;index_reads&quot;: 9,
+                    &quot;index_fetches&quot;: 9
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 324,
+                &quot;cache_hits&quot;: 200,
+                &quot;hit_ratio&quot;: &quot;61.00&quot;
+            }
+        },
+        &quot;Serverapp1_getblock&quot;: {
+            &quot;sequential_scans&quot;: 85,
+            &quot;rows_read&quot;: 15175931,
+            &quot;index_scans&quot;: 209534,
+            &quot;live_rows&quot;: 54,
+            &quot;table_size&quot;: &quot;454 MB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_getblock_pkey&quot;,
+                    &quot;index_scans&quot;: 193156,
+                    &quot;index_reads&quot;: 193156,
+                    &quot;index_fetches&quot;: 193049
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_getblock_height_key&quot;,
+                    &quot;index_scans&quot;: 16378,
+                    &quot;index_reads&quot;: 15214546,
+                    &quot;index_fetches&quot;: 93029
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 1397736,
+                &quot;cache_hits&quot;: 1281796,
+                &quot;hit_ratio&quot;: &quot;91.00&quot;
+            }
+        },
+        &quot;Serverapp1_getblockstats&quot;: {
+            &quot;sequential_scans&quot;: 40,
+            &quot;rows_read&quot;: 7141610,
+            &quot;index_scans&quot;: 4258,
+            &quot;live_rows&quot;: 56,
+            &quot;table_size&quot;: &quot;266 MB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1__height_5083d5_idx&quot;,
+                    &quot;index_scans&quot;: 2959,
+                    &quot;index_reads&quot;: 14522,
+                    &quot;index_fetches&quot;: 14522
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_rpc_getblockstats_height_key&quot;,
+                    &quot;index_scans&quot;: 1299,
+                    &quot;index_reads&quot;: 13402271,
+                    &quot;index_fetches&quot;: 59861
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_rpc_getblockstats_height_155cf6be_uniq&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_rpc_getblockstats_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 282907,
+                &quot;cache_hits&quot;: 180845,
+                &quot;hit_ratio&quot;: &quot;63.00&quot;
+            }
+        },
+        &quot;Serverapp1_getpeerinfo&quot;: {
+            &quot;sequential_scans&quot;: 106,
+            &quot;rows_read&quot;: 1883260,
+            &quot;index_scans&quot;: 710,
+            &quot;live_rows&quot;: 10,
+            &quot;table_size&quot;: &quot;23 MB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_rpc_getpeerinfo_test12_peer_id_0620f11a_like&quot;,
+                    &quot;index_scans&quot;: 710,
+                    &quot;index_reads&quot;: 1361,
+                    &quot;index_fetches&quot;: 700
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_rpc_getpeerinfo_test12_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 289319,
+                &quot;cache_hits&quot;: 286392,
+                &quot;hit_ratio&quot;: &quot;98.00&quot;
+            }
+        },
+        &quot;Serverapp1_hardware_status&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 10,
+            &quot;table_size&quot;: &quot;1808 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_hardware_status_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 22,
+                &quot;cache_hits&quot;: 17,
+                &quot;hit_ratio&quot;: &quot;73.00&quot;
+            }
+        },
+        &quot;Serverapp1_hashrate&quot;: {
+            &quot;sequential_scans&quot;: 69,
+            &quot;rows_read&quot;: 409929,
+            &quot;index_scans&quot;: 47584,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;464 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_hashrate_date_key&quot;,
+                    &quot;index_scans&quot;: 47584,
+                    &quot;index_reads&quot;: 95104,
+                    &quot;index_fetches&quot;: 47904
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_hashrate_date_83c600cf_uniq&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_hashrate_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 52393,
+                &quot;cache_hits&quot;: 52334,
+                &quot;hit_ratio&quot;: &quot;99.00&quot;
+            }
+        },
+        &quot;Serverapp1_mempool_distribution&quot;: {
+            &quot;sequential_scans&quot;: 19,
+            &quot;rows_read&quot;: 8834202,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 741,
+            &quot;table_size&quot;: &quot;26 MB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_mempool_distribution_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_mempool_distr_timestamp_fee_rate_range_3ab3015c_uniq&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 64580,
+                &quot;cache_hits&quot;: 57869,
+                &quot;hit_ratio&quot;: &quot;89.00&quot;
+            }
+        },
+        &quot;Serverapp1_mempoolstatistics&quot;: {
+            &quot;sequential_scans&quot;: 38,
+            &quot;rows_read&quot;: 461244,
+            &quot;index_scans&quot;: 9,
+            &quot;live_rows&quot;: 19,
+            &quot;table_size&quot;: &quot;3888 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_mempoolstatistics_pkey&quot;,
+                    &quot;index_scans&quot;: 9,
+                    &quot;index_reads&quot;: 9,
+                    &quot;index_fetches&quot;: 9
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 18515,
+                &quot;cache_hits&quot;: 18028,
+                &quot;hit_ratio&quot;: &quot;97.00&quot;
+            }
+        },
+        &quot;Serverapp1_mining_data_devices&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;25 MB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_mining_data_devices_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;Serverapp1_mining_data_general&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;1104 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_mining_data_general_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;Serverapp1_mining_data_workers&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;3688 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_mining_data_worker_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;Serverapp1_nodes&quot;: {
+            &quot;sequential_scans&quot;: 42,
+            &quot;rows_read&quot;: 276663,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 18,
+            &quot;table_size&quot;: &quot;592 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_nodes_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 3118,
+                &quot;cache_hits&quot;: 2969,
+                &quot;hit_ratio&quot;: &quot;95.00&quot;
+            }
+        },
+        &quot;Serverapp1_plots_getblockstats&quot;: {
+            &quot;sequential_scans&quot;: 23,
+            &quot;rows_read&quot;: 621,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;40 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_plots_getblockstats_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 115,
+                &quot;cache_hits&quot;: 110,
+                &quot;hit_ratio&quot;: &quot;94.00&quot;
+            }
+        },
+        &quot;Serverapp1_plots_of_hashrate&quot;: {
+            &quot;sequential_scans&quot;: 16,
+            &quot;rows_read&quot;: 16,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;8192 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_plots_hashrate_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 32,
+                &quot;cache_hits&quot;: 32,
+                &quot;hit_ratio&quot;: &quot;96.00&quot;
+            }
+        },
+        &quot;Serverapp1_plots_of_mempool&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;8192 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_plots_of_mempool_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;Serverapp1_plots_of_mining&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;48 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_plots_of_mining_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;Serverapp1_plots_of_network&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;8192 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_plots_of_network_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;Serverapp1_postgres_table_info&quot;: {
+            &quot;sequential_scans&quot;: 532,
+            &quot;rows_read&quot;: 44443644,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 259,
+            &quot;table_size&quot;: &quot;11 MB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_postgres_table_info_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 752911,
+                &quot;cache_hits&quot;: 751495,
+                &quot;hit_ratio&quot;: &quot;99.00&quot;
+            }
+        },
+        &quot;Serverapp1_systemmetrics&quot;: {
+            &quot;sequential_scans&quot;: 122,
+            &quot;rows_read&quot;: 4779562,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 24,
+            &quot;table_size&quot;: &quot;10 MB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_systemmetrics_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 159430,
+                &quot;cache_hits&quot;: 158121,
+                &quot;hit_ratio&quot;: &quot;99.00&quot;
+            }
+        },
+        &quot;Serverapp1_transactions&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 1172664,
+            &quot;live_rows&quot;: 192835,
+            &quot;table_size&quot;: &quot;148 GB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_transactions_pkey&quot;,
+                    &quot;index_scans&quot;: 939324,
+                    &quot;index_reads&quot;: 939324,
+                    &quot;index_fetches&quot;: 939279
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_transactions_txid_block_id_22397c55_uniq&quot;,
+                    &quot;index_scans&quot;: 209170,
+                    &quot;index_reads&quot;: 16335,
+                    &quot;index_fetches&quot;: 16335
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_transactions_block_id_5d82cb08&quot;,
+                    &quot;index_scans&quot;: 24170,
+                    &quot;index_reads&quot;: 64291870,
+                    &quot;index_fetches&quot;: 64028027
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 3429759,
+                &quot;cache_hits&quot;: 3306407,
+                &quot;hit_ratio&quot;: &quot;96.00&quot;
+            }
+        },
+        &quot;Serverapp1_transactions_inputs&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 1484646,
+            &quot;live_rows&quot;: 399622,
+            &quot;table_size&quot;: &quot;488 GB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_transactions_inputs_transaction_id_037d229c&quot;,
+                    &quot;index_scans&quot;: 1044237,
+                    &quot;index_reads&quot;: 1976870,
+                    &quot;index_fetches&quot;: 1976870
+                },
+                {
+                    &quot;index_name&quot;: &quot;transactions_inputs_transaction_vin_txid_vin_vout_uniq&quot;,
+                    &quot;index_scans&quot;: 440409,
+                    &quot;index_reads&quot;: 40787,
+                    &quot;index_fetches&quot;: 40756
+                },
+                {
+                    &quot;index_name&quot;: &quot;idx_inputs_vin_txid&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;idx_inputs_vin_vout&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;idx_inputs_vin_prevout_address&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_transactions_inputs_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 1968771,
+                &quot;cache_hits&quot;: 1966186,
+                &quot;hit_ratio&quot;: &quot;99.00&quot;
+            }
+        },
+        &quot;Serverapp1_transactions_outputs&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 1613434,
+            &quot;live_rows&quot;: 523232,
+            &quot;table_size&quot;: &quot;300 GB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_transactions_outputs_transaction_id_011ebf65&quot;,
+                    &quot;index_scans&quot;: 1411832,
+                    &quot;index_reads&quot;: 3033755,
+                    &quot;index_fetches&quot;: 3033755
+                },
+                {
+                    &quot;index_name&quot;: &quot;transactions_outputs_transaction_vout_n_uniq&quot;,
+                    &quot;index_scans&quot;: 201602,
+                    &quot;index_reads&quot;: 16878,
+                    &quot;index_fetches&quot;: 16864
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_transactions_outputs_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 2367744,
+                &quot;cache_hits&quot;: 2365991,
+                &quot;hit_ratio&quot;: &quot;99.00&quot;
+            }
+        },
+        &quot;Serverapp1_utxo&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;0 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1_utxo_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1__txid_29c141_idx&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;Serverapp1__block_h_7660d2_idx&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;auth_group&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;0 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;auth_group_name_a6ea08ec_like&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_group_name_key&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_group_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;auth_group_permissions&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;0 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;auth_group_permissions_group_id_b120cbf9&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_group_permissions_permission_id_84c5c92e&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_group_permissions_group_id_permission_id_0cd325b0_uniq&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_group_permissions_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;auth_permission&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;64 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;auth_permission_content_type_id_2f476e4b&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_permission_content_type_id_codename_01ab375a_uniq&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_permission_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;auth_user&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;0 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;auth_user_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_user_username_key&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_user_username_6821ab7c_like&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;auth_user_groups&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;0 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;auth_user_groups_user_id_group_id_94350c0c_uniq&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_user_groups_group_id_97559544&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_user_groups_user_id_6a12ed8b&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_user_groups_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;auth_user_user_permissions&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;0 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;auth_user_user_permissions_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_user_user_permissions_user_id_permission_id_14a6b632_uniq&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_user_user_permissions_permission_id_1fbb5f2c&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;auth_user_user_permissions_user_id_a95ead1b&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;django_admin_log&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;0 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;django_admin_log_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;django_admin_log_content_type_id_c4bce8eb&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;django_admin_log_user_id_c564eba6&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;django_content_type&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;16 kB&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;django_content_type_app_label_model_76bd3d3b_uniq&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;django_content_type_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        },
+        &quot;django_migrations&quot;: {
+            &quot;sequential_scans&quot;: 6,
+            &quot;rows_read&quot;: 294,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;8192 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;django_migrations_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 6,
+                &quot;cache_hits&quot;: 3,
+                &quot;hit_ratio&quot;: &quot;42.00&quot;
+            }
+        },
+        &quot;django_session&quot;: {
+            &quot;sequential_scans&quot;: 0,
+            &quot;rows_read&quot;: 0,
+            &quot;index_scans&quot;: 0,
+            &quot;live_rows&quot;: 0,
+            &quot;table_size&quot;: &quot;0 bytes&quot;,
+            &quot;indexes&quot;: [
+                {
+                    &quot;index_name&quot;: &quot;django_session_pkey&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;django_session_expire_date_a5c62663&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                },
+                {
+                    &quot;index_name&quot;: &quot;django_session_session_key_c0390e0f_like&quot;,
+                    &quot;index_scans&quot;: 0,
+                    &quot;index_reads&quot;: 0,
+                    &quot;index_fetches&quot;: 0
+                }
+            ],
+            &quot;cache_hit_ratio&quot;: {
+                &quot;total_access&quot;: 0,
+                &quot;cache_hits&quot;: 0,
+                &quot;hit_ratio&quot;: &quot;0.00&quot;
+            }
+        }
+    }
+}</pre
+        
+            <div class="footer">
+                <a href="index.html">Back</a>
+                <a href="index.html">More</a>
+            </div>
+        </body>
+        </html>
+    
