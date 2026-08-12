@@ -270,34 +270,34 @@
                     <pre><code>
 {
     "name": "Nodus Tyrolensis Stettiner",
-    "blockcount": 962135,
-    "connections": 16,
-    "uptime": 641,
-    "uptimenice": "4d, 1h, 10m",
+    "blockcount": 962199,
+    "connections": 19,
+    "uptime": 2994,
+    "uptimenice": "4d, 12h, 49m",
     "blockchain_info": {
         "chain": "main",
-        "blocks": 962135,
-        "headers": 962135,
-        "bestblockhash": "0000000000000000000050bbba858e95baa5260555e5f44cbeb79316bfe4d675",
+        "blocks": 962199,
+        "headers": 962199,
+        "bestblockhash": "000000000000000000022cfa3d387ce298312f328ece2bfba68d71aed857c7ec",
         "bits": "1702353d",
         "target": "00000000000000000002353d0000000000000000000000000000000000000000",
         "difficulty": 127479855693691.4,
-        "time": 1786532043,
-        "mediantime": 1786529881,
+        "time": 1786572475,
+        "mediantime": 1786568691,
         "verificationprogress": 1,
         "initialblockdownload": false,
-        "chainwork": "00000000000000000000000000000000000000013ee0cb9ee25119b49bab1778",
-        "size_on_disk": 867030816127,
+        "chainwork": "00000000000000000000000000000000000000013efdc809bfabd5e9b0ab8ab8",
+        "size_on_disk": 867153416211,
         "pruned": false,
         "warnings": [],
-        "blocks_found_in_last_24_hours": 137
+        "blocks_found_in_last_24_hours": 141
     },
     "mempoolinfo": {
         "loaded": true,
-        "size": 45758,
-        "bytes": 34559963,
-        "usage": 186427040,
-        "total_fee": 0.06807139,
+        "size": 61335,
+        "bytes": 37840962,
+        "usage": 210439616,
+        "total_fee": 0.11310544,
         "maxmempool": 2000000000,
         "mempoolminfee": 1e-06,
         "minrelaytxfee": 1e-06,
@@ -310,7 +310,7 @@
     "getindexinfo": {
         "txindex": {
             "synced": true,
-            "best_block_height": 962135
+            "best_block_height": 962199
         }
     },
     "getnetworkinfo": {
@@ -327,8 +327,131 @@
         "localrelay": true,
         "timeoffset": 0,
         "networkactive": true,
-        "connections": 16,
-        "connections_in": 6,
+        "connections": 19,
+        "connections_in": 8,
+        "connections_out": 11,
+        "networks": [
+            {
+                "name": "ipv4",
+                "limited": false,
+                "reachable": true,
+                "proxy": "[]",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "ipv6",
+                "limited": false,
+                "reachable": true,
+                "proxy": "[]",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "onion",
+                "limited": false,
+                "reachable": true,
+                "proxy": "[]",
+                "proxy_randomize_credentials": true
+            },
+            {
+                "name": "i2p",
+                "limited": true,
+                "reachable": false,
+                "proxy": "[]",
+                "proxy_randomize_credentials": false
+            },
+            {
+                "name": "cjdns",
+                "limited": true,
+                "reachable": false,
+                "proxy": "[]",
+                "proxy_randomize_credentials": true
+            }
+        ],
+        "relayfee": 1e-06,
+        "incrementalfee": 1e-06,
+        "localaddresses": "[]",
+        "warnings": []
+    },
+    "getmemoryinfo": {
+        "locked": {
+            "used": 464,
+            "free": 261680,
+            "total": 262144,
+            "locked": 262144,
+            "chunks_used": 4,
+            "chunks_free": 2
+        }
+    },
+    "time": "12.08.2026 - 22:39",
+    "status": "connected",
+    "timestamp": 1786574359
+}
+                    </code></pre>
+                </div>
+
+                <!-- Node 2 -->
+                <div class="node-column" style="text-align: left;">
+                    <h3>Nodus Tyrolensis Fanes</h3>
+                    <pre><code>
+{
+    "name": "Nodus Tyrolensis Fanes",
+    "blockcount": 962199,
+    "connections": 21,
+    "uptime": 2053,
+    "uptimenice": "32d, 13h, 34m",
+    "blockchain_info": {
+        "chain": "main",
+        "blocks": 962199,
+        "headers": 962199,
+        "bestblockhash": "000000000000000000022cfa3d387ce298312f328ece2bfba68d71aed857c7ec",
+        "bits": "1702353d",
+        "target": "00000000000000000002353d0000000000000000000000000000000000000000",
+        "difficulty": 127479855693691.4,
+        "time": 1786572475,
+        "mediantime": 1786568691,
+        "verificationprogress": 0.9999938377426455,
+        "initialblockdownload": false,
+        "chainwork": "00000000000000000000000000000000000000013efdc809bfabd5e9b0ab8ab8",
+        "size_on_disk": 867171262839,
+        "pruned": false,
+        "warnings": [],
+        "blocks_found_in_last_24_hours": 141
+    },
+    "mempoolinfo": {
+        "loaded": true,
+        "size": 80114,
+        "bytes": 40860646,
+        "usage": 235054848,
+        "total_fee": 0.11865234,
+        "maxmempool": 2000000000,
+        "mempoolminfee": 1e-06,
+        "minrelaytxfee": 1e-06,
+        "incrementalrelayfee": 1e-06,
+        "unbroadcastcount": 0,
+        "fullrbf": true
+    },
+    "getindexinfo": {
+        "txindex": {
+            "synced": true,
+            "best_block_height": 962199
+        }
+    },
+    "getnetworkinfo": {
+        "version": 290200,
+        "subversion": "/Satoshi:29.2.0(Nodus Tyrolensis Fanes)/",
+        "protocolversion": 70016,
+        "localservices": "0000000000000c09",
+        "localservicesnames": [
+            "NETWORK",
+            "WITNESS",
+            "NETWORK_LIMITED",
+            "P2P_V2"
+        ],
+        "localrelay": true,
+        "timeoffset": 0,
+        "networkactive": true,
+        "connections": 21,
+        "connections_in": 11,
         "connections_out": 10,
         "networks": [
             {
@@ -382,132 +505,9 @@
             "chunks_free": 2
         }
     },
-    "time": "12.08.2026 - 11:00",
+    "time": "12.08.2026 - 22:39",
     "status": "connected",
-    "timestamp": 1786532405
-}
-                    </code></pre>
-                </div>
-
-                <!-- Node 2 -->
-                <div class="node-column" style="text-align: left;">
-                    <h3>Nodus Tyrolensis Fanes</h3>
-                    <pre><code>
-{
-    "name": "Nodus Tyrolensis Fanes",
-    "blockcount": 962135,
-    "connections": 22,
-    "uptime": 3301,
-    "uptimenice": "32d, 1h, 55m",
-    "blockchain_info": {
-        "chain": "main",
-        "blocks": 962135,
-        "headers": 962135,
-        "bestblockhash": "0000000000000000000050bbba858e95baa5260555e5f44cbeb79316bfe4d675",
-        "bits": "1702353d",
-        "target": "00000000000000000002353d0000000000000000000000000000000000000000",
-        "difficulty": 127479855693691.4,
-        "time": 1786532043,
-        "mediantime": 1786529881,
-        "verificationprogress": 0.9999987960054729,
-        "initialblockdownload": false,
-        "chainwork": "00000000000000000000000000000000000000013ee0cb9ee25119b49bab1778",
-        "size_on_disk": 867048662755,
-        "pruned": false,
-        "warnings": [],
-        "blocks_found_in_last_24_hours": 137
-    },
-    "mempoolinfo": {
-        "loaded": true,
-        "size": 68609,
-        "bytes": 37100718,
-        "usage": 211750816,
-        "total_fee": 0.07287745,
-        "maxmempool": 2000000000,
-        "mempoolminfee": 1e-06,
-        "minrelaytxfee": 1e-06,
-        "incrementalrelayfee": 1e-06,
-        "unbroadcastcount": 0,
-        "fullrbf": true
-    },
-    "getindexinfo": {
-        "txindex": {
-            "synced": true,
-            "best_block_height": 962135
-        }
-    },
-    "getnetworkinfo": {
-        "version": 290200,
-        "subversion": "/Satoshi:29.2.0(Nodus Tyrolensis Fanes)/",
-        "protocolversion": 70016,
-        "localservices": "0000000000000c09",
-        "localservicesnames": [
-            "NETWORK",
-            "WITNESS",
-            "NETWORK_LIMITED",
-            "P2P_V2"
-        ],
-        "localrelay": true,
-        "timeoffset": 0,
-        "networkactive": true,
-        "connections": 22,
-        "connections_in": 12,
-        "connections_out": 10,
-        "networks": [
-            {
-                "name": "ipv4",
-                "limited": false,
-                "reachable": true,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            },
-            {
-                "name": "ipv6",
-                "limited": false,
-                "reachable": true,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            },
-            {
-                "name": "onion",
-                "limited": false,
-                "reachable": true,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            },
-            {
-                "name": "i2p",
-                "limited": true,
-                "reachable": false,
-                "proxy": "[]",
-                "proxy_randomize_credentials": false
-            },
-            {
-                "name": "cjdns",
-                "limited": true,
-                "reachable": false,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            }
-        ],
-        "relayfee": 1e-06,
-        "incrementalfee": 1e-06,
-        "localaddresses": "[]",
-        "warnings": []
-    },
-    "getmemoryinfo": {
-        "locked": {
-            "used": 496,
-            "free": 261648,
-            "total": 262144,
-            "locked": 262144,
-            "chunks_used": 5,
-            "chunks_free": 2
-        }
-    },
-    "time": "12.08.2026 - 11:00",
-    "status": "connected",
-    "timestamp": 1786532411
+    "timestamp": 1786574364
 }
                     </code></pre>
                 </div>
@@ -554,9 +554,9 @@
         "localaddresses": "[]"
     },
     "getmemoryinfo": {},
-    "time": "12.08.2026 - 11:00",
+    "time": "12.08.2026 - 22:39",
     "status": "unreachable",
-    "timestamp": 1786532423
+    "timestamp": 1786574375
 }
                     </code></pre>
                 </div>
