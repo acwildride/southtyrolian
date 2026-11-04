@@ -31,6 +31,22 @@ a{color:inherit}
 .stn-menu a{display:block;padding:7px 10px;border-radius:8px;text-decoration:none;color:var(--txt);white-space:nowrap}
 .stn-menu a:hover{background:#1d2433}
 
+/* Fullscreen */
+.stn-fs{margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);color:var(--muted);
+  padding:5px 11px;border-radius:999px;font:inherit;font-size:13px;cursor:pointer}
+.stn-fs:hover{color:var(--txt);background:#1a2030}
+.stn-fs svg,.fs-btn svg{width:14px;height:14px}
+.card{position:relative}
+.fs-btn{position:absolute;top:12px;right:12px;z-index:5;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;
+  background:#1d2433;border:1px solid var(--line);color:var(--muted);cursor:pointer;opacity:.75;transition:opacity .15s}
+.fs-btn:hover{opacity:1;color:var(--txt)}
+.card:hover .fs-btn{opacity:1}
+.card:fullscreen{border-radius:0;border:0;padding:22px 26px;overflow:auto;background:var(--bg)}
+.card:-webkit-full-screen{border-radius:0;border:0;padding:22px 26px;overflow:auto;background:var(--bg)}
+.card:fullscreen h2{font-size:20px}
+html:fullscreen body{overflow-y:auto}
+.no-fs .stn-fs,.no-fs .fs-btn{display:none}
+
 /* Hero */
 .hero{max-width:1500px;margin:16px auto 0;padding:0 20px}
 .hero-in{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);min-height:190px;display:flex;align-items:flex-end;
@@ -136,7 +152,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
 
 </head>
 <body>
-<nav class="stn-nav"><div class="stn-in"><a class="stn-brand" href="index.html">₿ <b>Southtyrolian</b> Nodes</a><a class="stn-lnk" href="index.html">Home</a><details class="stn-dd on"><summary>Nodes</summary><div class="stn-menu"><a href="nodes_data.html">Mempool</a><a href="nodes_data_2.html">Network</a><a href="nodes_data_3.html">Node Details</a><a href="mining_data.html">Mining</a><a href="hardware_data.html">Hardware</a><a href="hardware_data2.html">Hardware Plots</a><a href="databases_data.html">Databases</a></div></details><details class="stn-dd"><summary>Blockstats</summary><div class="stn-menu"><a href="getblockstats_data.html">Txs &amp; Fees</a><a href="getblockstats_data_2.html">SegWit</a><a href="getblockstats_data_3.html">Size &amp; Weight</a><a href="getblockstats_data_4.html">UTXO Set</a><a href="getblockstats_data_5.html">Tx Size</a><a href="getblockstats_data_6.html">Subsidy &amp; Tx Value</a><a href="getblockstats_data_7.html">Avg Tx Size</a><a href="getblockstats_data_8.html">Avg &amp; Median Fee</a><a href="getblockstats_data_9.html">Max &amp; Min Fee</a><a href="getblockstats_data_10.html">Avg Feerate</a><a href="getblockstats_data_11.html">Max &amp; Min Feerate</a><a href="getblockstats_data_12.html">Inputs &amp; Outputs</a></div></details><details class="stn-dd"><summary>UTXOs</summary><div class="stn-menu"><a href="utxos_data.html">URPD</a><a href="utxos_data_2.html">UTXO Metrics</a></div></details><details class="stn-dd"><summary>Bitcoin</summary><div class="stn-menu"><a href="btc_data_1.html">Price Action</a><a href="btc_data_2.html">Volume &amp; OBV</a></div></details><details class="stn-dd"><summary>Macro</summary><div class="stn-menu"><a href="fred_data.html">FED · Central Bank</a><a href="fred_data_2.html">FED · Debt &amp; Banks</a><a href="fred_data_3.html">FED · Economic Data</a><a href="fred_data_4.html">FED · Wealth Totals</a><a href="fred_data_5.html">FED · Wealth Assets</a><a href="fred_data_6.html">FED · Wealth Liabilities</a><a href="ecb_data_1.html">ECB · Central Bank</a><a href="ecb_data_2.html">ECB · GDP &amp; Debt</a><a href="ecb_data_3.html">ECB · Employment</a><a href="treasury_data.html">US Treasury</a><a href="economic_data.html">Commodities</a><a href="terna_data.html">Italian Power (Terna)</a></div></details><details class="stn-dd"><summary>Weather</summary><div class="stn-menu"><a href="meteo_data.html">3000 m Peaks</a><a href="meteo_data_2.html">Adige River Flow</a></div></details></div></nav>
+<nav class="stn-nav"><div class="stn-in"><a class="stn-brand" href="index.html">₿ <b>Southtyrolian</b> Nodes</a><a class="stn-lnk" href="index.html">Home</a><details class="stn-dd on"><summary>Nodes</summary><div class="stn-menu"><a href="nodes_data.html">Mempool</a><a href="nodes_data_2.html">Network</a><a href="nodes_data_3.html">Node Details</a><a href="mining_data.html">Mining</a><a href="hardware_data.html">Hardware</a><a href="hardware_data2.html">Hardware Plots</a><a href="databases_data.html">Databases</a></div></details><details class="stn-dd"><summary>Blockstats</summary><div class="stn-menu"><a href="getblockstats_data.html">Txs &amp; Fees</a><a href="getblockstats_data_2.html">SegWit</a><a href="getblockstats_data_3.html">Size &amp; Weight</a><a href="getblockstats_data_4.html">UTXO Set</a><a href="getblockstats_data_5.html">Tx Size</a><a href="getblockstats_data_6.html">Subsidy &amp; Tx Value</a><a href="getblockstats_data_7.html">Avg Tx Size</a><a href="getblockstats_data_8.html">Avg &amp; Median Fee</a><a href="getblockstats_data_9.html">Max &amp; Min Fee</a><a href="getblockstats_data_10.html">Avg Feerate</a><a href="getblockstats_data_11.html">Max &amp; Min Feerate</a><a href="getblockstats_data_12.html">Inputs &amp; Outputs</a></div></details><details class="stn-dd"><summary>UTXOs</summary><div class="stn-menu"><a href="utxos_data.html">URPD</a><a href="utxos_data_2.html">UTXO Metrics</a></div></details><details class="stn-dd"><summary>Bitcoin</summary><div class="stn-menu"><a href="btc_data_1.html">Price Action</a><a href="btc_data_2.html">Volume &amp; OBV</a></div></details><details class="stn-dd"><summary>Macro</summary><div class="stn-menu"><a href="fred_data.html">FED · Central Bank</a><a href="fred_data_2.html">FED · Debt &amp; Banks</a><a href="fred_data_3.html">FED · Economic Data</a><a href="fred_data_4.html">FED · Wealth Totals</a><a href="fred_data_5.html">FED · Wealth Assets</a><a href="fred_data_6.html">FED · Wealth Liabilities</a><a href="ecb_data_1.html">ECB · Central Bank</a><a href="ecb_data_2.html">ECB · GDP &amp; Debt</a><a href="ecb_data_3.html">ECB · Employment</a><a href="treasury_data.html">US Treasury</a><a href="economic_data.html">Commodities</a><a href="terna_data.html">Italian Power (Terna)</a></div></details><details class="stn-dd"><summary>Weather</summary><div class="stn-menu"><a href="meteo_data.html">3000 m Peaks</a><a href="meteo_data_2.html">Adige River Flow</a></div></details><button type="button" class="stn-fs" id="stn-fs" title="Fullscreen (F)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>Fullscreen</span></button></div></nav>
 
 <div class="page-head"><div class="card">
   <div>
@@ -145,41 +161,41 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
     <div class="src">Data source: Southtyrolian Nodes (Stettiner &amp; Fanes full nodes)</div>
     <div class="note">Raw RPC data of each node (addresses and proxies removed).</div>
   </div>
-  <div class="stand" style="color:var(--muted)">Updated 04 Nov 2026 · 21:50 (UTC+01:00)</div>
+  <div class="stand" style="color:var(--muted)">Updated 04 Nov 2026 · 22:04 (UTC+01:00)</div>
   <div class="subnav" style="flex-basis:100%"><a class="chip" href="nodes_data.html">Mempool</a><a class="chip" href="nodes_data_2.html">Network</a><a class="chip on" href="nodes_data_3.html">Node Details</a><a class="chip" href="mining_data.html">Mining</a><a class="chip" href="hardware_data.html">Hardware</a><a class="chip" href="hardware_data2.html">Hardware Plots</a><a class="chip" href="databases_data.html">Databases</a></div>
 </div></div>
 
 <main>
 <section class="card s4 txt-card"><h2>Nodus Tyrolensis Stettiner</h2><pre>{
   &quot;name&quot;: &quot;Nodus Tyrolensis Stettiner&quot;,
-  &quot;blockcount&quot;: 974577,
-  &quot;connections&quot;: 33,
-  &quot;uptime&quot;: 2427,
-  &quot;uptimenice&quot;: &quot;11d, 12h, 40m&quot;,
+  &quot;blockcount&quot;: 974583,
+  &quot;connections&quot;: 35,
+  &quot;uptime&quot;: 644,
+  &quot;uptimenice&quot;: &quot;11d, 13h, 10m&quot;,
   &quot;blockchain_info&quot;: {
     &quot;chain&quot;: &quot;main&quot;,
-    &quot;blocks&quot;: 974577,
-    &quot;headers&quot;: 974577,
-    &quot;bestblockhash&quot;: &quot;00000000000000000000ea8498ca825b5fcab961f18ab3825d689e4a012e5e28&quot;,
+    &quot;blocks&quot;: 974583,
+    &quot;headers&quot;: 974583,
+    &quot;bestblockhash&quot;: &quot;000000000000000000009f332ce3f8dca4305c7add33670bffd43dabb30eb7c6&quot;,
     &quot;bits&quot;: &quot;1701e5ac&quot;,
     &quot;target&quot;: &quot;00000000000000000001e5ac0000000000000000000000000000000000000000&quot;,
     &quot;difficulty&quot;: 148364561003867.4,
-    &quot;time&quot;: 1793822861,
-    &quot;mediantime&quot;: 1793821448,
+    &quot;time&quot;: 1793825832,
+    &quot;mediantime&quot;: 1793824509,
     &quot;verificationprogress&quot;: 1,
     &quot;initialblockdownload&quot;: false,
-    &quot;chainwork&quot;: &quot;000000000000000000000000000000000000000155bfd90b56efd41d9ae352f2&quot;,
-    &quot;size_on_disk&quot;: 890026710232,
+    &quot;chainwork&quot;: &quot;000000000000000000000000000000000000000155c302ad664e23a0492db1f8&quot;,
+    &quot;size_on_disk&quot;: 890037764273,
     &quot;pruned&quot;: false,
     &quot;warnings&quot;: [],
-    &quot;blocks_found_in_last_24_hours&quot;: 140
+    &quot;blocks_found_in_last_24_hours&quot;: 145
   },
   &quot;mempoolinfo&quot;: {
     &quot;loaded&quot;: true,
-    &quot;size&quot;: 51048,
-    &quot;bytes&quot;: 12394482,
-    &quot;usage&quot;: 83324504,
-    &quot;total_fee&quot;: 0.04497611,
+    &quot;size&quot;: 42459,
+    &quot;bytes&quot;: 10849593,
+    &quot;usage&quot;: 72152424,
+    &quot;total_fee&quot;: 0.0204729,
     &quot;maxmempool&quot;: 2000000000,
     &quot;mempoolminfee&quot;: 1e-06,
     &quot;minrelaytxfee&quot;: 1e-06,
@@ -195,7 +211,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
   &quot;getindexinfo&quot;: {
     &quot;txindex&quot;: {
       &quot;synced&quot;: true,
-      &quot;best_block_height&quot;: 974577
+      &quot;best_block_height&quot;: 974583
     }
   },
   &quot;getnetworkinfo&quot;: {
@@ -212,8 +228,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
     &quot;localrelay&quot;: true,
     &quot;timeoffset&quot;: 0,
     &quot;networkactive&quot;: true,
-    &quot;connections&quot;: 33,
-    &quot;connections_in&quot;: 23,
+    &quot;connections&quot;: 35,
+    &quot;connections_in&quot;: 25,
     &quot;connections_out&quot;: 10,
     &quot;networks&quot;: [
       {
@@ -259,48 +275,48 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
   },
   &quot;getmemoryinfo&quot;: {
     &quot;locked&quot;: {
-      &quot;used&quot;: 560,
-      &quot;free&quot;: 261584,
+      &quot;used&quot;: 592,
+      &quot;free&quot;: 261552,
       &quot;total&quot;: 262144,
       &quot;locked&quot;: 262144,
-      &quot;chunks_used&quot;: 7,
-      &quot;chunks_free&quot;: 3
+      &quot;chunks_used&quot;: 8,
+      &quot;chunks_free&quot;: 2
     }
   },
-  &quot;time&quot;: &quot;04.11.2026 - 20:32&quot;,
+  &quot;time&quot;: &quot;04.11.2026 - 21:02&quot;,
   &quot;status&quot;: &quot;connected&quot;,
-  &quot;timestamp&quot;: 1793824327
+  &quot;timestamp&quot;: 1793826145
 }</pre></section>
 <section class="card s4 txt-card"><h2>Nodus Tyrolensis Fanes</h2><pre>{
   &quot;name&quot;: &quot;Nodus Tyrolensis Fanes&quot;,
-  &quot;blockcount&quot;: 974577,
-  &quot;connections&quot;: 25,
-  &quot;uptime&quot;: 1522,
-  &quot;uptimenice&quot;: &quot;4d, 15h, 25m&quot;,
+  &quot;blockcount&quot;: 974583,
+  &quot;connections&quot;: 20,
+  &quot;uptime&quot;: 3339,
+  &quot;uptimenice&quot;: &quot;4d, 15h, 55m&quot;,
   &quot;blockchain_info&quot;: {
     &quot;chain&quot;: &quot;main&quot;,
-    &quot;blocks&quot;: 974577,
-    &quot;headers&quot;: 974577,
-    &quot;bestblockhash&quot;: &quot;00000000000000000000ea8498ca825b5fcab961f18ab3825d689e4a012e5e28&quot;,
+    &quot;blocks&quot;: 974583,
+    &quot;headers&quot;: 974583,
+    &quot;bestblockhash&quot;: &quot;000000000000000000009f332ce3f8dca4305c7add33670bffd43dabb30eb7c6&quot;,
     &quot;bits&quot;: &quot;1701e5ac&quot;,
     &quot;target&quot;: &quot;00000000000000000001e5ac0000000000000000000000000000000000000000&quot;,
     &quot;difficulty&quot;: 148364561003867.4,
-    &quot;time&quot;: 1793822861,
-    &quot;mediantime&quot;: 1793821448,
+    &quot;time&quot;: 1793825832,
+    &quot;mediantime&quot;: 1793824509,
     &quot;verificationprogress&quot;: 1,
     &quot;initialblockdownload&quot;: false,
-    &quot;chainwork&quot;: &quot;000000000000000000000000000000000000000155bfd90b56efd41d9ae352f2&quot;,
-    &quot;size_on_disk&quot;: 890044863301,
+    &quot;chainwork&quot;: &quot;000000000000000000000000000000000000000155c302ad664e23a0492db1f8&quot;,
+    &quot;size_on_disk&quot;: 890055917342,
     &quot;pruned&quot;: false,
     &quot;warnings&quot;: [],
-    &quot;blocks_found_in_last_24_hours&quot;: 140
+    &quot;blocks_found_in_last_24_hours&quot;: 145
   },
   &quot;mempoolinfo&quot;: {
     &quot;loaded&quot;: true,
-    &quot;size&quot;: 54595,
-    &quot;bytes&quot;: 12897164,
-    &quot;usage&quot;: 87375528,
-    &quot;total_fee&quot;: 0.04569303,
+    &quot;size&quot;: 45980,
+    &quot;bytes&quot;: 11358584,
+    &quot;usage&quot;: 76240960,
+    &quot;total_fee&quot;: 0.02135461,
     &quot;maxmempool&quot;: 2000000000,
     &quot;mempoolminfee&quot;: 1e-06,
     &quot;minrelaytxfee&quot;: 1e-06,
@@ -316,7 +332,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
   &quot;getindexinfo&quot;: {
     &quot;txindex&quot;: {
       &quot;synced&quot;: true,
-      &quot;best_block_height&quot;: 974577
+      &quot;best_block_height&quot;: 974583
     }
   },
   &quot;getnetworkinfo&quot;: {
@@ -333,8 +349,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
     &quot;localrelay&quot;: true,
     &quot;timeoffset&quot;: 0,
     &quot;networkactive&quot;: true,
-    &quot;connections&quot;: 25,
-    &quot;connections_in&quot;: 15,
+    &quot;connections&quot;: 20,
+    &quot;connections_in&quot;: 10,
     &quot;connections_out&quot;: 10,
     &quot;networks&quot;: [
       {
@@ -380,17 +396,17 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
   },
   &quot;getmemoryinfo&quot;: {
     &quot;locked&quot;: {
-      &quot;used&quot;: 496,
-      &quot;free&quot;: 261648,
+      &quot;used&quot;: 464,
+      &quot;free&quot;: 261680,
       &quot;total&quot;: 262144,
       &quot;locked&quot;: 262144,
-      &quot;chunks_used&quot;: 5,
+      &quot;chunks_used&quot;: 4,
       &quot;chunks_free&quot;: 2
     }
   },
-  &quot;time&quot;: &quot;04.11.2026 - 20:32&quot;,
+  &quot;time&quot;: &quot;04.11.2026 - 21:02&quot;,
   &quot;status&quot;: &quot;connected&quot;,
-  &quot;timestamp&quot;: 1793824335
+  &quot;timestamp&quot;: 1793826152
 }</pre></section>
 <section class="card s4 txt-card"><h2>Nodus Tyrolensis Oberettes</h2><pre>{
   &quot;name&quot;: &quot;Nodus Tyrolensis Oberettes&quot;,
@@ -430,9 +446,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
     &quot;localaddresses&quot;: &quot;[]&quot;
   },
   &quot;getmemoryinfo&quot;: {},
-  &quot;time&quot;: &quot;04.11.2026 - 20:32&quot;,
+  &quot;time&quot;: &quot;04.11.2026 - 21:02&quot;,
   &quot;status&quot;: &quot;unreachable&quot;,
-  &quot;timestamp&quot;: 1793824346
+  &quot;timestamp&quot;: 1793826163
 }</pre></section>
 <div class="pager"><a href="nodes_data_2.html"><small>← Previous</small>Network</a><a class="next" href="mining_data.html"><small>Next →</small>Mining</a></div>
 </main>
@@ -453,6 +469,58 @@ document.querySelectorAll('.stn-dd').forEach(function(d){
 document.addEventListener('click',function(e){
   if(!e.target.closest('.stn-dd')){document.querySelectorAll('.stn-dd').forEach(function(o){o.open=false;});}
 });
+</script>
+
+<script>
+// ---------- Fullscreen: whole page (nav button / key F) and single chart cards ----------
+(function(){
+  var d=document, root=d.documentElement;
+  var can=!!(root.requestFullscreen||root.webkitRequestFullscreen);
+  if(!can){root.classList.add('no-fs');return;}
+  var icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+  function fsEl(){return d.fullscreenElement||d.webkitFullscreenElement;}
+  function enter(el){(el.requestFullscreen||el.webkitRequestFullscreen).call(el);}
+  function exit(){(d.exitFullscreen||d.webkitExitFullscreen).call(d);}
+  function toggle(el){ if(fsEl()) exit(); else enter(el); }
+
+  var nb=d.getElementById('stn-fs');
+  if(nb) nb.addEventListener('click',function(){toggle(root);});
+  d.addEventListener('keydown',function(e){
+    if((e.key==='f'||e.key==='F')&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!/input|textarea|select/i.test(e.target.tagName)) toggle(root);
+  });
+
+  // one button per card that contains a chart
+  d.querySelectorAll('.card').forEach(function(card){
+    if(!card.querySelector('.plotly-graph-div')) return;
+    var b=d.createElement('button'); b.type='button'; b.className='fs-btn'; b.title='Show this chart in fullscreen'; b.innerHTML=icon;
+    b.addEventListener('click',function(ev){ev.stopPropagation(); if(fsEl()===card) exit(); else enter(card);});
+    card.appendChild(b);
+  });
+
+  function resizeCharts(){
+    var el=fsEl();
+    d.querySelectorAll('.plotly-graph-div').forEach(function(gd){
+      if(!window.Plotly||!gd.layout) return;
+      if(gd._origStyleH===undefined){ gd._origStyleH=gd.style.height||''; gd._origH=gd.layout.height; }
+      var inside=el && el!==root && el.contains(gd);
+      if(inside){
+        var n=el.querySelectorAll('.plotly-graph-div').length;
+        var top=gd.getBoundingClientRect().top - el.getBoundingClientRect().top;
+        var h=Math.max(320,Math.floor((window.innerHeight - Math.min(top,160) - 40)/n));
+        gd.style.height=h+'px';
+        Plotly.relayout(gd,{height:h,autosize:true});
+      }else if(gd._fsDone){
+        gd.style.height=gd._origStyleH;
+        Plotly.relayout(gd,{height:gd._origH,autosize:true});
+      }
+      gd._fsDone=!!inside;
+      Plotly.Plots.resize(gd);
+    });
+    if(nb) nb.querySelector('span').textContent = (el===root) ? 'Exit fullscreen' : 'Fullscreen';
+  }
+  d.addEventListener('fullscreenchange',function(){setTimeout(resizeCharts,60);});
+  d.addEventListener('webkitfullscreenchange',function(){setTimeout(resizeCharts,60);});
+})();
 </script>
 
 </body>
