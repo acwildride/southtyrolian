@@ -1,264 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Server Hardware · Southtyrolian Nodes</title>
+<style>
+:root{
+  --bg:#0d1016;--card:#151a23;--card2:#1a2130;--line:#232a36;--txt:#dbe2ee;--muted:#8b95a7;
+  --acc:#f7931a;--acc2:#4c9be8;--good:#3fb37f;--warn:#e8b04c;--bad:#e5534b;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:radial-gradient(1200px 600px at 10% -10%,#2a1d0c 0%,var(--bg) 55%) fixed,var(--bg);color:var(--txt);
+  font-family:Inter,"Segoe UI",system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
 
-        <html>
-        <head>
-            <title>Hardware Data Server</title>
-            <style>
-                body {
-                    background-color: black;
-                    color: white;
-                    font-family: Calibri, sans-serif;
-                    margin: 0;
-                    padding: 0;
-                }
+/* Navigation */
+.stn-nav{position:sticky;top:0;z-index:9000;background:rgba(13,16,22,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.stn-in{max-width:1500px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.stn-brand{font-weight:700;margin-right:14px;letter-spacing:-.01em;text-decoration:none}
+.stn-brand b{color:var(--acc)}
+.stn-lnk,.stn-dd>summary{text-decoration:none;color:var(--muted);padding:6px 12px;border-radius:999px;font-weight:500;border:1px solid transparent;cursor:pointer}
+.stn-lnk:hover,.stn-dd>summary:hover{color:var(--txt);background:#1a2030}
+.stn-lnk.on,.stn-dd.on>summary{color:var(--txt);background:#1d2433;border-color:var(--line)}
+.stn-dd{position:relative}
+.stn-dd>summary{list-style:none;display:inline-flex;align-items:center;gap:6px}
+.stn-dd>summary::-webkit-details-marker{display:none}
+.stn-dd>summary::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.7}
+.stn-menu{position:absolute;z-index:9999;top:calc(100% + 8px);left:0;min-width:210px;max-height:70vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px;box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.stn-menu a{display:block;padding:7px 10px;border-radius:8px;text-decoration:none;color:var(--txt);white-space:nowrap}
+.stn-menu a:hover{background:#1d2433}
 
-                h1 {
-                    text-align: left;
-                    font-size: 2em;
-                    margin-top: 20px;
-                    margin-left: 70px;
-                }
+/* Fullscreen */
+.stn-fs{margin-left:auto;display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--line);color:var(--muted);
+  padding:5px 11px;border-radius:999px;font:inherit;font-size:13px;cursor:pointer}
+.stn-fs:hover{color:var(--txt);background:#1a2030}
+.stn-fs svg,.fs-btn svg{width:14px;height:14px}
+.card{position:relative}
+.fs-btn{position:absolute;top:12px;right:12px;z-index:5;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;
+  background:#1d2433;border:1px solid var(--line);color:var(--muted);cursor:pointer;opacity:.75;transition:opacity .15s}
+.fs-btn:hover{opacity:1;color:var(--txt)}
+.card:hover .fs-btn{opacity:1}
+.card:fullscreen{border-radius:0;border:0;padding:22px 26px;overflow:auto;background:var(--bg)}
+.card:-webkit-full-screen{border-radius:0;border:0;padding:22px 26px;overflow:auto;background:var(--bg)}
+.card:fullscreen h2{font-size:20px}
+html:fullscreen body{overflow-y:auto}
+.no-fs .stn-fs,.no-fs .fs-btn{display:none}
 
-                h2 {
-                    text-align: left;
-                    margin-top: 20px;
-                    margin-left: 70px;
-                    font-size: 12px;
-                    color: white;
-                    line-height: 1.5;
-                    white-space: pre-wrap;
-                }
+/* Hero */
+.hero{max-width:1500px;margin:16px auto 0;padding:0 20px}
+.hero-in{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);min-height:190px;display:flex;align-items:flex-end;
+  background-size:cover;background-position:center}
+.hero-in::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,16,22,.92) 0%,rgba(13,16,22,.55) 55%,rgba(13,16,22,.15) 100%)}
+.hero-tx{position:relative;padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;width:100%}
+h1{margin:0;font-size:30px;letter-spacing:-.02em;line-height:1.15}
+h1 span{color:var(--acc)}
+.sub{color:#b7c0cf;margin-top:4px}
+.stand{color:#b7c0cf;font-size:12px;text-align:right}
 
-                .flex-container {
-                    display: flex;
-                    justify-content: space-between;  /* This will space the items evenly between left, center, and right */
-                    padding: 20px;
-                }
+main{max-width:1500px;margin:auto;padding:16px 20px 40px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.s12{grid-column:span 12}.s8{grid-column:span 8}.s6{grid-column:span 6}.s4{grid-column:span 4}
 
-                .section {
-                    width: 30%;  /* Each section takes up 30% of the width */
-                    padding: 20px;
-                    border: 1px solid #555;
-                    border-radius: 8px;
-                    background-color: #333;
-                }
+/* KPIs */
+.kpis{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{background:linear-gradient(160deg,var(--card2),#141922);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.kl{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.kv{font-size:24px;font-weight:650;margin:4px 0 2px;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kv.sm{font-size:19px;padding-top:4px}
+.kv small{font-size:13px;font-weight:500;color:var(--muted);margin-left:3px}
+.ks{color:var(--muted);font-size:12px}
+.meter{height:6px;border-radius:3px;background:#232a36;margin-top:8px;overflow:hidden}
+.meter span{display:block;height:100%;border-radius:3px;background:var(--acc2)}
+.meter span.hi{background:var(--warn)}
+.meter span.crit{background:var(--bad)}
 
-                .section h3 {
-                    font-size: 1.5em;
-                    margin-bottom: 10px;
-                    text-align: center;
-                }
+/* Cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;min-width:0}
+.card h2{margin:0 0 4px;font-size:16px;font-weight:600;display:flex;align-items:center;gap:8px}
+.muted{color:var(--muted);margin:0 0 10px;font-size:13px}
 
-                .data-item {
-                    margin: 5px 0;
-                }
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--muted);flex:none}
+.dot.ok{background:var(--good);box-shadow:0 0 0 3px rgba(63,179,127,.18)}
+.dot.bad{background:var(--bad);box-shadow:0 0 0 3px rgba(229,83,75,.18)}
+.dot.warn{background:var(--warn);box-shadow:0 0 0 3px rgba(232,176,76,.18)}
+td .dot{margin-right:8px;vertical-align:0}
+.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.badge{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;background:#1d2433;color:var(--muted);border:1px solid var(--line);white-space:nowrap}
+.badge.ok{color:var(--good);border-color:rgba(63,179,127,.35);background:rgba(63,179,127,.08)}
+.badge.warn{color:var(--warn);border-color:rgba(232,176,76,.35);background:rgba(232,176,76,.08)}
+.badge.bad{color:var(--bad);border-color:rgba(229,83,75,.35);background:rgba(229,83,75,.08)}
 
-                .footer {
-                    margin-top: auto;
-                    text-align: center;
-                    padding: 20px;
-                    background-color: #222;
-                }
+.node{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.node:last-of-type{border-bottom:0}
+.node .nm{font-weight:600}
+.node .nm small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.node .h{font-variant-numeric:tabular-nums;text-align:right}
+.node .h small{display:block;margin-top:2px}
 
-                .node-container {
-                    display: flex;
-                    justify-content: space-between;
-                }
-                .node-column {
-                    width: 30%;
-                    padding: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
-                    background-color: black;
-                    overflow-x: auto;
-                }
-                pre {
-                    font-size: 15px; /* Adjust size as needed, e.g., 16px, 18px, etc. */
-                    font-family: monospace; /* Ensures it looks like code */
-                    white-space: pre-wrap; /* Allows wrapping if JSON is too wide */
-                    line-height: 1.5; /* Increases readability by adding space between lines */
+.fees{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.fee{background:#11161e;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.fee .v{font-size:22px;font-weight:650;font-variant-numeric:tabular-nums}
+.fee .l{font-size:12px;color:var(--muted)}
+.fee.h .v{color:var(--bad)}.fee.m .v{color:var(--warn)}.fee.lo .v{color:var(--good)}
 
-                }
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--muted);font-weight:500}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#1a2030}
+.tbl{overflow-x:auto}
+td a{color:var(--acc2);text-decoration:none}
+td a:hover{text-decoration:underline}
+.empty{color:var(--muted);font-size:13px;padding:6px 0}
 
-                .ul {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    overflow: hidden;
-                    padding-left: 30px;
-                    padding-right: 30px;
-                }
-                .li {
-                    float: right;
-                    margin-right: 10px;
-                }
-                .li:hover .sub-menu {
-                    display: block;
-                }
-                .sub-menu {
-                    display: none;
-                    list-style-type: none;
-                    padding-left: 15px;
-                }
-                a {
-                    color: white; /* White links */
-                    text-decoration: none; /* Remove underline */
-                    padding: 8px; /* Padding around links */
-                    display: inline-block; /* Ensures padding works */
-                }
+/* Explore */
+.explore{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sec{background:#11161e;border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.sec h3{margin:0;font-size:14px;font-weight:600}
+.sec p{margin:2px 0 10px;color:var(--muted);font-size:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-block;text-decoration:none;font-size:12.5px;padding:4px 10px;border-radius:999px;background:#1d2433;border:1px solid var(--line);color:var(--txt)}
+.chip:hover{border-color:#3a4558;color:var(--acc)}
 
-                a:hover {
-                    background-color: #444; /* Darken on hover */
-                }
-                .footer {
-                    margin-top: auto; /* Pushes the footer to the bottom of the page */
-                    text-align: center;
-                    padding: 20px;
-                    background-color: #222; /* Dark background for the footer */
-                }
+footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
 
-                .footer a {
-                    margin: 0 10px; /* Add spacing between links */
-                }
-                
-            </style>
-            <script>
-                function toggleSubmenu(id) {
-                    var submenu = document.getElementById(id);
-                    if (submenu.style.display === "none") {
-                        submenu.style.display = "block";
-                    } else {
-                        submenu.style.display = "none";
-                    }
-                }
-            </script>
-        </head>
-        <body>
-            <ul class="ul">
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-3k')">WS</a>
-                    <ul id="submenu-3k" class="sub-menu">
-                        <li><a href="meteo_data.html">3k-Peaks</a></li>
-                        <li><a href="meteo_data_2.html">Etsch Q</></li>
-                    </ul>
-                </li>
+@media (max-width:1100px){.s8,.s6,.s4{grid-column:span 12}.explore{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){main,.hero{padding-left:16px;padding-right:16px}.stn-in{padding:8px 16px}
+  .explore{grid-template-columns:1fr}h1{font-size:24px}.stand{text-align:left}
+  .stn-menu{position:fixed;left:16px;right:16px;top:var(--navh,60px);min-width:0}}
 
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-ecb')">Eco</a>
-                    <ul id="submenu-ecb" class="sub-menu">
-                        <li><a href="economic_data.html">Commodities</a></li>
-                        <li><a href="terna_data.html">Terna</a></li>
-                    </ul>
-                </li>     
+.page-head{max-width:1500px;margin:16px auto 0;padding:0 20px}
+.page-head .card{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.crumb{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.page-head h1{font-size:26px;margin:2px 0 4px}
+.src{color:var(--muted);font-size:13px}
+.note{color:#b7c0cf;font-size:13px;margin-top:4px}
+.subnav{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.subnav a.chip.on{border-color:var(--acc);color:var(--acc)}
+.plot-card{padding:10px 10px 6px}
+.plot-card .plotly-graph-div{width:100%!important}
+.txt-card pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,"Cascadia Code",Consolas,monospace;
+  font-size:12.5px;line-height:1.5;color:#c5cddb;max-height:640px;overflow:auto;background:#0b0e13;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.pager{grid-column:1/-1;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pager a{display:inline-flex;flex-direction:column;gap:2px;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 16px;min-width:180px}
+.pager a:hover{border-color:#3a4558}
+.pager a small{color:var(--muted);font-size:12px}
+.pager a.next{text-align:right;margin-left:auto}
+</style>
 
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-ecb')">ECB</a>
-                    <ul id="submenu-ecb" class="sub-menu">
-                        <li><a href="ecb_data_1.html">Central Bank Data</a></li>
-                        <li><a href="ecb_data_2.html">GDP and Dept</a></li>
-                        <li><a href="ecb_data_3.html">Employment</a></li>
-                    </ul>
-                </li>
+</head>
+<body>
+<nav class="stn-nav"><div class="stn-in"><a class="stn-brand" href="index.html">₿ <b>Southtyrolian</b> Nodes</a><a class="stn-lnk" href="index.html">Home</a><details class="stn-dd on"><summary>Nodes</summary><div class="stn-menu"><a href="nodes_data.html">Mempool</a><a href="nodes_data_2.html">Network</a><a href="nodes_data_3.html">Node Details</a><a href="mining_data.html">Mining</a><a href="hardware_data.html">Hardware</a><a href="hardware_data2.html">Hardware Plots</a><a href="databases_data.html">Databases</a></div></details><details class="stn-dd"><summary>Blockstats</summary><div class="stn-menu"><a href="getblockstats_data.html">Txs &amp; Fees</a><a href="getblockstats_data_2.html">SegWit</a><a href="getblockstats_data_3.html">Size &amp; Weight</a><a href="getblockstats_data_4.html">UTXO Set</a><a href="getblockstats_data_5.html">Tx Size</a><a href="getblockstats_data_6.html">Subsidy &amp; Tx Value</a><a href="getblockstats_data_7.html">Avg Tx Size</a><a href="getblockstats_data_8.html">Avg &amp; Median Fee</a><a href="getblockstats_data_9.html">Max &amp; Min Fee</a><a href="getblockstats_data_10.html">Avg Feerate</a><a href="getblockstats_data_11.html">Max &amp; Min Feerate</a><a href="getblockstats_data_12.html">Inputs &amp; Outputs</a></div></details><details class="stn-dd"><summary>UTXOs</summary><div class="stn-menu"><a href="utxos_data.html">URPD</a><a href="utxos_data_2.html">UTXO Metrics</a></div></details><details class="stn-dd"><summary>Bitcoin</summary><div class="stn-menu"><a href="btc_data_1.html">Price Action</a><a href="btc_data_2.html">Volume &amp; OBV</a></div></details><details class="stn-dd"><summary>Macro</summary><div class="stn-menu"><a href="fred_data.html">FED · Central Bank</a><a href="fred_data_2.html">FED · Debt &amp; Banks</a><a href="fred_data_3.html">FED · Economic Data</a><a href="fred_data_4.html">FED · Wealth Totals</a><a href="fred_data_5.html">FED · Wealth Assets</a><a href="fred_data_6.html">FED · Wealth Liabilities</a><a href="ecb_data_1.html">ECB · Central Bank</a><a href="ecb_data_2.html">ECB · GDP &amp; Debt</a><a href="ecb_data_3.html">ECB · Employment</a><a href="treasury_data.html">US Treasury</a><a href="economic_data.html">Commodities</a><a href="terna_data.html">Italian Power (Terna)</a></div></details><details class="stn-dd"><summary>Weather</summary><div class="stn-menu"><a href="meteo_data.html">3000 m Peaks</a><a href="meteo_data_2.html">Adige River Flow</a></div></details><button type="button" class="stn-fs" id="stn-fs" title="Fullscreen (F)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>Fullscreen</span></button></div></nav>
 
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-ust')">UST</a>
-                    <ul id="submenu-ust" class="sub-menu">
-                        <li><a href="treasury_data.html">Treasury</a></li>
-                    </ul>
-                </li>
+<div class="page-head"><div class="card">
+  <div>
+    <div class="crumb">Nodes</div>
+    <h1>Server Hardware</h1>
+    <div class="src">Data source: Southtyrolian Nodes Server</div>
+    <div class="note">Latest hardware status and backup report.</div>
+  </div>
+  <div class="stand" style="color:var(--muted)">Updated 04 Nov 2026 · 23:21 (UTC+01:00)</div>
+  <div class="subnav" style="flex-basis:100%"><a class="chip" href="nodes_data.html">Mempool</a><a class="chip" href="nodes_data_2.html">Network</a><a class="chip" href="nodes_data_3.html">Node Details</a><a class="chip" href="mining_data.html">Mining</a><a class="chip on" href="hardware_data.html">Hardware</a><a class="chip" href="hardware_data2.html">Hardware Plots</a><a class="chip" href="databases_data.html">Databases</a></div>
+</div></div>
 
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-fed')">FED</a>
-                    <ul id="submenu-fed" class="sub-menu">
-                        <li><a href="fred_data.html">Central Bank</a></li>
-                        <li><a href="fred_data_2.html">Dept and Banks</a></li>
-                        <li><a href="fred_data_3.html">Economic Data</a></li>
-                        <li><a href="fred_data_4.html">Wealth Distribution - Totals</a></li>
-                        <li><a href="fred_data_5.html">Wealth Distribution - Assets</a></li>
-                        <li><a href="fred_data_6.html">Wealth Distribution - Liabilities</a></li>
-                    </ul>
-                </li>
+<main>
+<section class="card s8 txt-card"><h2>Hardware Status</h2><pre>--------------- Hardware Status ------------
 
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-btc')">BTC</a>
-                    <ul id="submenu-btc" class="sub-menu">
-                        <li><a href="btc_data_1.html">Price Action</a></li>
-                        <li><a href="btc_data_2.html">Volume OBV</a></li>                        
-                    </ul>
-                </li>
+Reporting data from 2026-11-04 23:20:39
 
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-utxos')">UTXOs</a>
-                    <ul id="submenu-utxos" class="sub-menu">
-                        <li><a href="utxos_data.html">URPD</a></li>
-                        <li><a href="utxos_data_2.html">UTXO</a></li>
-                    </ul>
-                </li>
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-blockstats')">Blockstats</a>
-                    <ul id="submenu-blockstats" class="sub-menu">
-                        <li><a href="getblockstats_data.html">Txs and Fees</a></li>
-                        <li><a href="getblockstats_data_2.html">Segwit</a></li>
-                        <li><a href="getblockstats_data_3.html">Size and Weight</a></li>
-                        <li><a href="getblockstats_data_4.html">UTXO Set</a></li>
-                        <li><a href="getblockstats_data_5.html">Tx Size</a></li>
-                        <li><a href="getblockstats_data_6.html">Subsidy and Txs Value</a></li>
-                        <li><a href="getblockstats_data_7.html">Avg Tx Size</a></li>
-                        <li><a href="getblockstats_data_8.html">Avg and Median Fee</a></li>
-                        <li><a href="getblockstats_data_9.html">Max and Min Fee</a></li>
-                        <li><a href="getblockstats_data_10.html">Avg Feerate</a></li>
-                        <li><a href="getblockstats_data_11.html">Avg Tx Size</a></li>
-                        <li><a href="getblockstats_data_12.html">Ins and Outs</a></li>
-                    </ul>
-                </li>
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-nodes')">Nodes</a>
-                    <ul id="submenu-nodes" class="sub-menu">
-                        <li><a href="nodes_data.html">Mempool</a></li>
-                        <li><a href="nodes_data_2.html">Network</a></li>
-                        <li><a href="nodes_data_3.html">Nodes Details</a></li>
-                        <li><a href="mining_data.html">Mining</a></li>
-                        <li><a href="hardware_data.html">Hardware Data</a></li>
-                        <li><a href="hardware_data2.html">Hardware Plots</a></li>
-                        <li><a href="databases_data.html">Databases</a></li>
-                    </ul>
-                </li>
-                <li class="li"><a href="index.html">Home</a></li>
-            </ul>
-
-            <h1>Hardware Data Server</h1>
-            <h2>Data source: Southtyrolian Server</h2>
-
-            <pre style="margin-left: 40px; margin-right: 20px;">--------------- Hardware Status ------------
-
-Reporting data from 2026-11-04 23:00:22
-
-CPU usage: 57.0%
-RAM usage: 81.5%
+CPU usage: 35.2%
+RAM usage: 91.2%
 
 Disk Usage for C:\ (C:\):
 Total Space: 239.95 GB
-Used Space: 218.68 GB
-Free Space: 21.27 GB
-Space used: 91.1%
+Used Space: 218.91 GB
+Free Space: 21.04 GB
+Space used: 91.2%
 
 Disk Usage for D:\ (D:\):
 Total Space: 1950.35 GB
-Used Space: 1009.01 GB
-Free Space: 941.34 GB
-Space used: 51.7%
+Used Space: 1012.36 GB
+Free Space: 937.99 GB
+Space used: 51.9%
 
 Disk Usage for E:\ (E:\):
 Total Space: 2050.42 GB
-Used Space: 1780.48 GB
-Free Space: 269.94 GB
+Used Space: 1780.51 GB
+Free Space: 269.91 GB
 Space used: 86.8%
 
 Disk Usage for F:\ (F:\):
 Total Space: 1000.19 GB
-Used Space: 527.31 GB
-Free Space: 472.88 GB
+Used Space: 527.33 GB
+Free Space: 472.86 GB
 Space used: 52.7%
 
 Disk Usage for G:\ (G:\):
@@ -273,7 +209,7 @@ Used Space: 0.14 GB
 Free Space: 1000.06 GB
 Space used: 0.0%
 
-Uptime System: 8d 08h 00m 19s
+Uptime System: 8d 08h 20m 40s
 Active connections count: 7
 IPs of active connections:
 192.168.178.43
@@ -285,9 +221,8 @@ IPs of active connections:
 127.0.0.1
 
 
-</pre>
-            
-            <pre style="margin-left: 40px; margin-right: 20px;">
+</pre></section>
+<section class="card s4 txt-card"><h2>Backups (latest)</h2><pre>
 
 -------- Postgres pg_dumpall Backup --------
 
@@ -297,12 +232,79 @@ IPs of active connections:
 
 
 
-</pre>
-        
-            <div class="footer">
-                <a href="index.html">Back</a>
-                <a href="hardware_data2.html">More</a>
-            </div>
-        </body>
-        </html>
-    
+</pre></section>
+<div class="pager"><a href="mining_data.html"><small>← Previous</small>Mining</a><a class="next" href="hardware_data2.html"><small>Next →</small>Hardware Plots</a></div>
+</main>
+
+<footer>Southtyrolian Nodes · Nodus Tyrolensis Stettiner &amp; Fanes · Data generated automatically by the Southtyrolian Nodes Server</footer>
+
+<script>
+// close the other dropdowns when one opens, and all on outside click
+document.querySelectorAll('.stn-dd').forEach(function(d){
+  d.addEventListener('toggle',function(){
+    if(d.open){
+      document.querySelectorAll('.stn-dd').forEach(function(o){if(o!==d)o.open=false;});
+      var nav=document.querySelector('.stn-nav');
+      document.documentElement.style.setProperty('--navh',(nav.getBoundingClientRect().bottom+6)+'px');
+    }
+  });
+});
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.stn-dd')){document.querySelectorAll('.stn-dd').forEach(function(o){o.open=false;});}
+});
+</script>
+
+<script>
+// ---------- Fullscreen: whole page (nav button / key F) and single chart cards ----------
+(function(){
+  var d=document, root=d.documentElement;
+  var can=!!(root.requestFullscreen||root.webkitRequestFullscreen);
+  if(!can){root.classList.add('no-fs');return;}
+  var icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+  function fsEl(){return d.fullscreenElement||d.webkitFullscreenElement;}
+  function enter(el){(el.requestFullscreen||el.webkitRequestFullscreen).call(el);}
+  function exit(){(d.exitFullscreen||d.webkitExitFullscreen).call(d);}
+  function toggle(el){ if(fsEl()) exit(); else enter(el); }
+
+  var nb=d.getElementById('stn-fs');
+  if(nb) nb.addEventListener('click',function(){toggle(root);});
+  d.addEventListener('keydown',function(e){
+    if((e.key==='f'||e.key==='F')&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!/input|textarea|select/i.test(e.target.tagName)) toggle(root);
+  });
+
+  // one button per card that contains a chart
+  d.querySelectorAll('.card').forEach(function(card){
+    if(!card.querySelector('.plotly-graph-div')) return;
+    var b=d.createElement('button'); b.type='button'; b.className='fs-btn'; b.title='Show this chart in fullscreen'; b.innerHTML=icon;
+    b.addEventListener('click',function(ev){ev.stopPropagation(); if(fsEl()===card) exit(); else enter(card);});
+    card.appendChild(b);
+  });
+
+  function resizeCharts(){
+    var el=fsEl();
+    d.querySelectorAll('.plotly-graph-div').forEach(function(gd){
+      if(!window.Plotly||!gd.layout) return;
+      if(gd._origStyleH===undefined){ gd._origStyleH=gd.style.height||''; gd._origH=gd.layout.height; }
+      var inside=el && el!==root && el.contains(gd);
+      if(inside){
+        var n=el.querySelectorAll('.plotly-graph-div').length;
+        var top=gd.getBoundingClientRect().top - el.getBoundingClientRect().top;
+        var h=Math.max(320,Math.floor((window.innerHeight - Math.min(top,160) - 40)/n));
+        gd.style.height=h+'px';
+        Plotly.relayout(gd,{height:h,autosize:true});
+      }else if(gd._fsDone){
+        gd.style.height=gd._origStyleH;
+        Plotly.relayout(gd,{height:gd._origH,autosize:true});
+      }
+      gd._fsDone=!!inside;
+      Plotly.Plots.resize(gd);
+    });
+    if(nb) nb.querySelector('span').textContent = (el===root) ? 'Exit fullscreen' : 'Fullscreen';
+  }
+  d.addEventListener('fullscreenchange',function(){setTimeout(resizeCharts,60);});
+  d.addEventListener('webkitfullscreenchange',function(){setTimeout(resizeCharts,60);});
+})();
+</script>
+
+</body>
+</html>
