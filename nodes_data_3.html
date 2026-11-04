@@ -1,548 +1,459 @@
-
-        <html>
-        <head>
-            <title>Nodes Data - Details</title>
-            <style>
-                body {
-                    background-color: black;
-                    color: white;
-                    font-family: Calibri, sans-serif;
-                    margin: 0;
-                    padding: 0;
-                }
-
-                h1 {
-                    text-align: left;
-                    font-size: 2em;
-                    margin-top: 20px;
-                    margin-left: 70px;
-                }
-
-                h2 {
-                    text-align: left;
-                    margin-top: 20px;
-                    margin-left: 70px;
-                    font-size: 12px;
-                    color: white;
-                    line-height: 1.5;
-                    white-space: pre-wrap;
-                }
-
-                .flex-container {
-                    display: flex;
-                    justify-content: space-between;  /* This will space the items evenly between left, center, and right */
-                    padding: 20px;
-                }
-
-                .section {
-                    width: 30%;  /* Each section takes up 30% of the width */
-                    padding: 20px;
-                    border: 1px solid #555;
-                    border-radius: 8px;
-                    background-color: #333;
-                }
-
-                .section h3 {
-                    font-size: 1.5em;
-                    margin-bottom: 10px;
-                    text-align: center;
-                }
-
-                .data-item {
-                    margin: 5px 0;
-                }
-
-                .footer {
-                    margin-top: auto;
-                    text-align: center;
-                    padding: 20px;
-                    background-color: #222;
-                }
-
-                .node-container {
-                    display: flex;
-                    justify-content: space-between;
-                }
-                .node-column {
-                    width: 30%;
-                    padding: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
-                    background-color: black;
-                    overflow-x: auto;
-                }
-                pre {
-                    font-size: 15px; /* Adjust size as needed, e.g., 16px, 18px, etc. */
-                    font-family: monospace; /* Ensures it looks like code */
-                    white-space: pre-wrap; /* Allows wrapping if JSON is too wide */
-                    line-height: 1.5; /* Increases readability by adding space between lines */
-
-                }
-
-                .ul {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    overflow: hidden;
-                    padding-left: 30px;
-                    padding-right: 30px;
-                }
-                .li {
-                    float: right;
-                    margin-right: 10px;
-                }
-                .li:hover .sub-menu {
-                    display: block;
-                }
-                .sub-menu {
-                    display: none;
-                    list-style-type: none;
-                    padding-left: 15px;
-                }
-                a {
-                    color: white; /* White links */
-                    text-decoration: none; /* Remove underline */
-                    padding: 8px; /* Padding around links */
-                    display: inline-block; /* Ensures padding works */
-                }
-
-                a:hover {
-                    background-color: #444; /* Darken on hover */
-                }
-                .footer {
-                    margin-top: auto; /* Pushes the footer to the bottom of the page */
-                    text-align: center;
-                    padding: 20px;
-                    background-color: #222; /* Dark background for the footer */
-                }
-
-                .footer a {
-                    margin: 0 10px; /* Add spacing between links */
-                }
-                
-            </style>
-            <script>
-                function toggleSubmenu(id) {
-                    var submenu = document.getElementById(id);
-                    if (submenu.style.display === "none") {
-                        submenu.style.display = "block";
-                    } else {
-                        submenu.style.display = "none";
-                    }
-                }
-            </script>
-        </head>
-        <body>
-            <ul class="ul">
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-3k')">WS</a>
-                    <ul id="submenu-3k" class="sub-menu">
-                        <li><a href="meteo_data.html">3k-Peaks</a></li>
-                        <li><a href="meteo_data_2.html">Etsch Q</></li>
-                    </ul>
-                </li>
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-ecb')">Eco</a>
-                    <ul id="submenu-ecb" class="sub-menu">
-                        <li><a href="economic_data.html">Commodities</a></li>
-                        <li><a href="terna_data.html">Terna</a></li>
-                    </ul>
-                </li>                
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-ecb')">ECB</a>
-                    <ul id="submenu-ecb" class="sub-menu">
-                        <li><a href="ecb_data_1.html">Central Bank Data</a></li>
-                        <li><a href="ecb_data_2.html">GDP and Dept</a></li>
-                        <li><a href="ecb_data_3.html">Employment</a></li>
-                    </ul>
-                </li>
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-ust')">UST</a>
-                    <ul id="submenu-ust" class="sub-menu">
-                        <li><a href="treasury_data.html">Treasury</a></li>
-                    </ul>
-                </li>
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-fed')">FED</a>
-                    <ul id="submenu-fed" class="sub-menu">
-                        <li><a href="fred_data.html">Central Bank</a></li>
-                        <li><a href="fred_data_2.html">Dept and Banks</a></li>
-                        <li><a href="fred_data_3.html">Economic Data</a></li>
-                        <li><a href="fred_data_4.html">Wealth Distribution - Totals</a></li>
-                        <li><a href="fred_data_5.html">Wealth Distribution - Assets</a></li>
-                        <li><a href="fred_data_6.html">Wealth Distribution - Liabilities</a></li>
-                    </ul>
-                </li>
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-btc')">BTC</a>
-                    <ul id="submenu-btc" class="sub-menu">
-                        <li><a href="btc_data_1.html">Price Action</a></li>
-                        <li><a href="btc_data_2.html">Volume OBV</a></li>                           
-                    </ul>
-                </li>
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-utxos')">UTXOs</a>
-                    <ul id="submenu-utxos" class="sub-menu">
-                        <li><a href="utxos_data.html">URPD</a></li>
-                        <li><a href="utxos_data_2.html">UTXO</a></li>
-                    </ul>
-                </li>
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-blockstats')">Blockstats</a>
-                    <ul id="submenu-blockstats" class="sub-menu">
-                        <li><a href="getblockstats_data.html">Txs and Fees</a></li>
-                        <li><a href="getblockstats_data_2.html">Segwit</a></li>
-                        <li><a href="getblockstats_data_3.html">Size and Weight</a></li>
-                        <li><a href="getblockstats_data_4.html">UTXO Set</a></li>
-                        <li><a href="getblockstats_data_5.html">Tx Size</a></li>
-                        <li><a href="getblockstats_data_6.html">Subsidy and Txs Value</a></li>
-                        <li><a href="getblockstats_data_7.html">Avg Tx Size</a></li>
-                        <li><a href="getblockstats_data_8.html">Avg and Median Fee</a></li>
-                        <li><a href="getblockstats_data_9.html">Max and Min Fee</a></li>
-                        <li><a href="getblockstats_data_10.html">Avg Feerate</a></li>
-                        <li><a href="getblockstats_data_11.html">Avg Tx Size</a></li>
-                        <li><a href="getblockstats_data_12.html">Ins and Outs</a></li>
-                    </ul>
-                </li>
-
-                <li class="li">
-                    <a href="#" onclick="toggleSubmenu('submenu-nodes')">Nodes</a>
-                    <ul id="submenu-nodes" class="sub-menu">
-                        <li><a href="nodes_data.html">Mempool</a></li>
-                        <li><a href="nodes_data_2.html">Network</a></li>
-                        <li><a href="nodes_data_3.html">Nodes Details</a></li>
-                        <li><a href="mining_data.html">Mining</a></li>
-                        <li><a href="hardware_data.html">Hardware Data</a></li>
-                        <li><a href="hardware_data2.html">Hardware Plots</a></li>
-                        <li><a href="databases_data.html">Databases</a></li>
-                    </ul>
-                </li>
-                <li class="li"><a href="index.html">Home</a></li>
-            </ul>
-
-            <h1>Nodes Data - Details</h1>
-            <h2>Data source: Southtyrolian Nodes</h2>
-
-            <div class="node-container">
-                <!-- Node 1 -->
-                <div class="node-column" style="text-align: left;">
-                    <h3>Nodus Tyrolensis Stettiner</h3>
-                    <pre><code>
-{
-    "name": "Nodus Tyrolensis Stettiner",
-    "blockcount": 974454,
-    "connections": 34,
-    "uptime": 2404,
-    "uptimenice": "10d, 15h, 40m",
-    "blockchain_info": {
-        "chain": "main",
-        "blocks": 974454,
-        "headers": 974454,
-        "bestblockhash": "00000000000000000000bb16b6938c91b2bcb10b8acbff119771383a4dc7034d",
-        "bits": "1701e5ac",
-        "target": "00000000000000000001e5ac0000000000000000000000000000000000000000",
-        "difficulty": 148364561003867.4,
-        "time": 1793748117,
-        "mediantime": 1793745832,
-        "verificationprogress": 1,
-        "initialblockdownload": false,
-        "chainwork": "0000000000000000000000000000000000000001557f03911be27626a5eeb6f7",
-        "size_on_disk": 889786919559,
-        "pruned": false,
-        "warnings": [],
-        "blocks_found_in_last_24_hours": 141
-    },
-    "mempoolinfo": {
-        "loaded": true,
-        "size": 34249,
-        "bytes": 16355673,
-        "usage": 93214440,
-        "total_fee": 0.02970647,
-        "maxmempool": 2000000000,
-        "mempoolminfee": 1e-06,
-        "minrelaytxfee": 1e-06,
-        "incrementalrelayfee": 1e-06,
-        "unbroadcastcount": 0,
-        "fullrbf": true,
-        "permitbaremultisig": true,
-        "maxdatacarriersize": 83,
-        "limitclustercount": 64,
-        "limitclustersize": 101000,
-        "optimal": true
-    },
-    "getindexinfo": {
-        "txindex": {
-            "synced": true,
-            "best_block_height": 974454
-        }
-    },
-    "getnetworkinfo": {
-        "version": 310100,
-        "subversion": "/Satoshi:31.1.0(Nodus Tyrolensis Stettiner)/",
-        "protocolversion": 70016,
-        "localservices": "0000000000000c09",
-        "localservicesnames": [
-            "NETWORK",
-            "WITNESS",
-            "NETWORK_LIMITED",
-            "P2P_V2"
-        ],
-        "localrelay": true,
-        "timeoffset": 0,
-        "networkactive": true,
-        "connections": 34,
-        "connections_in": 24,
-        "connections_out": 10,
-        "networks": [
-            {
-                "name": "ipv4",
-                "limited": false,
-                "reachable": true,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            },
-            {
-                "name": "ipv6",
-                "limited": false,
-                "reachable": true,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            },
-            {
-                "name": "onion",
-                "limited": false,
-                "reachable": true,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            },
-            {
-                "name": "i2p",
-                "limited": true,
-                "reachable": false,
-                "proxy": "[]",
-                "proxy_randomize_credentials": false
-            },
-            {
-                "name": "cjdns",
-                "limited": true,
-                "reachable": false,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            }
-        ],
-        "relayfee": 1e-06,
-        "incrementalfee": 1e-06,
-        "localaddresses": "[]",
-        "warnings": []
-    },
-    "getmemoryinfo": {
-        "locked": {
-            "used": 560,
-            "free": 261584,
-            "total": 262144,
-            "locked": 262144,
-            "chunks_used": 7,
-            "chunks_free": 3
-        }
-    },
-    "time": "03.11.2026 - 23:31",
-    "status": "connected",
-    "timestamp": 1793748704
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node Details · Southtyrolian Nodes</title>
+<style>
+:root{
+  --bg:#0d1016;--card:#151a23;--card2:#1a2130;--line:#232a36;--txt:#dbe2ee;--muted:#8b95a7;
+  --acc:#f7931a;--acc2:#4c9be8;--good:#3fb37f;--warn:#e8b04c;--bad:#e5534b;
 }
-                    </code></pre>
-                </div>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:radial-gradient(1200px 600px at 10% -10%,#2a1d0c 0%,var(--bg) 55%) fixed,var(--bg);color:var(--txt);
+  font-family:Inter,"Segoe UI",system-ui,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
 
-                <!-- Node 2 -->
-                <div class="node-column" style="text-align: left;">
-                    <h3>Nodus Tyrolensis Fanes</h3>
-                    <pre><code>
-{
-    "name": "Nodus Tyrolensis Fanes",
-    "blockcount": 974454,
-    "connections": 25,
-    "uptime": 1498,
-    "uptimenice": "3d, 18h, 24m",
-    "blockchain_info": {
-        "chain": "main",
-        "blocks": 974454,
-        "headers": 974454,
-        "bestblockhash": "00000000000000000000bb16b6938c91b2bcb10b8acbff119771383a4dc7034d",
-        "bits": "1701e5ac",
-        "target": "00000000000000000001e5ac0000000000000000000000000000000000000000",
-        "difficulty": 148364561003867.4,
-        "time": 1793748117,
-        "mediantime": 1793745832,
-        "verificationprogress": 1,
-        "initialblockdownload": false,
-        "chainwork": "0000000000000000000000000000000000000001557f03911be27626a5eeb6f7",
-        "size_on_disk": 889805072628,
-        "pruned": false,
-        "warnings": [],
-        "blocks_found_in_last_24_hours": 141
-    },
-    "mempoolinfo": {
-        "loaded": true,
-        "size": 37652,
-        "bytes": 16998511,
-        "usage": 97663712,
-        "total_fee": 0.03056094,
-        "maxmempool": 2000000000,
-        "mempoolminfee": 1e-06,
-        "minrelaytxfee": 1e-06,
-        "incrementalrelayfee": 1e-06,
-        "unbroadcastcount": 0,
-        "fullrbf": true,
-        "permitbaremultisig": true,
-        "maxdatacarriersize": 100000,
-        "limitclustercount": 64,
-        "limitclustersize": 101000,
-        "optimal": true
-    },
-    "getindexinfo": {
-        "txindex": {
-            "synced": true,
-            "best_block_height": 974454
-        }
-    },
-    "getnetworkinfo": {
-        "version": 310100,
-        "subversion": "/Satoshi:31.1.0(Nodus Tyrolensis Fanes)/",
-        "protocolversion": 70016,
-        "localservices": "0000000000000c09",
-        "localservicesnames": [
-            "NETWORK",
-            "WITNESS",
-            "NETWORK_LIMITED",
-            "P2P_V2"
-        ],
-        "localrelay": true,
-        "timeoffset": 0,
-        "networkactive": true,
-        "connections": 25,
-        "connections_in": 15,
-        "connections_out": 10,
-        "networks": [
-            {
-                "name": "ipv4",
-                "limited": false,
-                "reachable": true,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            },
-            {
-                "name": "ipv6",
-                "limited": false,
-                "reachable": true,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            },
-            {
-                "name": "onion",
-                "limited": false,
-                "reachable": true,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            },
-            {
-                "name": "i2p",
-                "limited": true,
-                "reachable": false,
-                "proxy": "[]",
-                "proxy_randomize_credentials": false
-            },
-            {
-                "name": "cjdns",
-                "limited": true,
-                "reachable": false,
-                "proxy": "[]",
-                "proxy_randomize_credentials": true
-            }
-        ],
-        "relayfee": 1e-06,
-        "incrementalfee": 1e-06,
-        "localaddresses": "[]",
-        "warnings": []
-    },
-    "getmemoryinfo": {
-        "locked": {
-            "used": 496,
-            "free": 261648,
-            "total": 262144,
-            "locked": 262144,
-            "chunks_used": 5,
-            "chunks_free": 3
-        }
-    },
-    "time": "03.11.2026 - 23:31",
-    "status": "connected",
-    "timestamp": 1793748711
-}
-                    </code></pre>
-                </div>
+/* Navigation */
+.stn-nav{position:sticky;top:0;z-index:9000;background:rgba(13,16,22,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.stn-in{max-width:1500px;margin:auto;padding:10px 20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.stn-brand{font-weight:700;margin-right:14px;letter-spacing:-.01em;text-decoration:none}
+.stn-brand b{color:var(--acc)}
+.stn-lnk,.stn-dd>summary{text-decoration:none;color:var(--muted);padding:6px 12px;border-radius:999px;font-weight:500;border:1px solid transparent;cursor:pointer}
+.stn-lnk:hover,.stn-dd>summary:hover{color:var(--txt);background:#1a2030}
+.stn-lnk.on,.stn-dd.on>summary{color:var(--txt);background:#1d2433;border-color:var(--line)}
+.stn-dd{position:relative}
+.stn-dd>summary{list-style:none;display:inline-flex;align-items:center;gap:6px}
+.stn-dd>summary::-webkit-details-marker{display:none}
+.stn-dd>summary::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.7}
+.stn-menu{position:absolute;z-index:9999;top:calc(100% + 8px);left:0;min-width:210px;max-height:70vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px;box-shadow:0 12px 32px rgba(0,0,0,.45)}
+.stn-menu a{display:block;padding:7px 10px;border-radius:8px;text-decoration:none;color:var(--txt);white-space:nowrap}
+.stn-menu a:hover{background:#1d2433}
 
-                <!-- Node 3 -->
-                <div class="node-column" style="text-align: left;">
-                    <h3>Nodus Tyrolensis Oberettes</h3>
-                    <pre><code>
-{
-    "name": "Nodus Tyrolensis Oberettes",
-    "blockcount": 0,
-    "connections": 0,
-    "uptime": "Not reachable",
-    "uptimenice": "Not reachable",
-    "blockchain_info": {
-        "blocks_found_in_last_24_hours": "144"
-    },
-    "mempoolinfo": {},
-    "getindexinfo": {},
-    "getnetworkinfo": {
-        "subversion": "Not reachable",
-        "networks": [
-            {
-                "name": "unknown",
-                "proxy": "[]"
-            },
-            {
-                "name": "unknown",
-                "proxy": "[]"
-            },
-            {
-                "name": "unknown",
-                "proxy": "[]"
-            },
-            {
-                "name": "unknown",
-                "proxy": "[]"
-            },
-            {
-                "name": "unknown",
-                "proxy": "[]"
-            }
-        ],
-        "localaddresses": "[]"
-    },
-    "getmemoryinfo": {},
-    "time": "03.11.2026 - 23:32",
-    "status": "unreachable",
-    "timestamp": 1793748722
-}
-                    </code></pre>
-                </div>
-            </div>
+/* Hero */
+.hero{max-width:1500px;margin:16px auto 0;padding:0 20px}
+.hero-in{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);min-height:190px;display:flex;align-items:flex-end;
+  background-size:cover;background-position:center}
+.hero-in::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,16,22,.92) 0%,rgba(13,16,22,.55) 55%,rgba(13,16,22,.15) 100%)}
+.hero-tx{position:relative;padding:22px 24px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;width:100%}
+h1{margin:0;font-size:30px;letter-spacing:-.02em;line-height:1.15}
+h1 span{color:var(--acc)}
+.sub{color:#b7c0cf;margin-top:4px}
+.stand{color:#b7c0cf;font-size:12px;text-align:right}
 
+main{max-width:1500px;margin:auto;padding:16px 20px 40px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.s12{grid-column:span 12}.s8{grid-column:span 8}.s6{grid-column:span 6}.s4{grid-column:span 4}
 
+/* KPIs */
+.kpis{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{background:linear-gradient(160deg,var(--card2),#141922);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.kl{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.kv{font-size:24px;font-weight:650;margin:4px 0 2px;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kv.sm{font-size:19px;padding-top:4px}
+.kv small{font-size:13px;font-weight:500;color:var(--muted);margin-left:3px}
+.ks{color:var(--muted);font-size:12px}
+.meter{height:6px;border-radius:3px;background:#232a36;margin-top:8px;overflow:hidden}
+.meter span{display:block;height:100%;border-radius:3px;background:var(--acc2)}
+.meter span.hi{background:var(--warn)}
+.meter span.crit{background:var(--bad)}
 
-            <div class="footer">
-                <a href="nodes_data_2.html">Back</a>
-                <a href="mining_data.html">More</a>
-            </div>
-        </body>
-        </html>
-    
+/* Cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;min-width:0}
+.card h2{margin:0 0 4px;font-size:16px;font-weight:600;display:flex;align-items:center;gap:8px}
+.muted{color:var(--muted);margin:0 0 10px;font-size:13px}
+
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--muted);flex:none}
+.dot.ok{background:var(--good);box-shadow:0 0 0 3px rgba(63,179,127,.18)}
+.dot.bad{background:var(--bad);box-shadow:0 0 0 3px rgba(229,83,75,.18)}
+.dot.warn{background:var(--warn);box-shadow:0 0 0 3px rgba(232,176,76,.18)}
+td .dot{margin-right:8px;vertical-align:0}
+.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-top:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.badge{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:999px;background:#1d2433;color:var(--muted);border:1px solid var(--line);white-space:nowrap}
+.badge.ok{color:var(--good);border-color:rgba(63,179,127,.35);background:rgba(63,179,127,.08)}
+.badge.warn{color:var(--warn);border-color:rgba(232,176,76,.35);background:rgba(232,176,76,.08)}
+.badge.bad{color:var(--bad);border-color:rgba(229,83,75,.35);background:rgba(229,83,75,.08)}
+
+.node{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.node:last-of-type{border-bottom:0}
+.node .nm{font-weight:600}
+.node .nm small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.node .h{font-variant-numeric:tabular-nums;text-align:right}
+.node .h small{display:block;margin-top:2px}
+
+.fees{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.fee{background:#11161e;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.fee .v{font-size:22px;font-weight:650;font-variant-numeric:tabular-nums}
+.fee .l{font-size:12px;color:var(--muted)}
+.fee.h .v{color:var(--bad)}.fee.m .v{color:var(--warn)}.fee.lo .v{color:var(--good)}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--muted);font-weight:500}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#1a2030}
+.tbl{overflow-x:auto}
+td a{color:var(--acc2);text-decoration:none}
+td a:hover{text-decoration:underline}
+.empty{color:var(--muted);font-size:13px;padding:6px 0}
+
+/* Explore */
+.explore{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sec{background:#11161e;border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.sec h3{margin:0;font-size:14px;font-weight:600}
+.sec p{margin:2px 0 10px;color:var(--muted);font-size:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-block;text-decoration:none;font-size:12.5px;padding:4px 10px;border-radius:999px;background:#1d2433;border:1px solid var(--line);color:var(--txt)}
+.chip:hover{border-color:#3a4558;color:var(--acc)}
+
+footer{text-align:center;color:var(--muted);font-size:12px;padding:0 20px 30px}
+
+@media (max-width:1100px){.s8,.s6,.s4{grid-column:span 12}.explore{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){main,.hero{padding-left:16px;padding-right:16px}.stn-in{padding:8px 16px}
+  .explore{grid-template-columns:1fr}h1{font-size:24px}.stand{text-align:left}
+  .stn-menu{position:fixed;left:16px;right:16px;top:var(--navh,60px);min-width:0}}
+
+.page-head{max-width:1500px;margin:16px auto 0;padding:0 20px}
+.page-head .card{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.crumb{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.page-head h1{font-size:26px;margin:2px 0 4px}
+.src{color:var(--muted);font-size:13px}
+.note{color:#b7c0cf;font-size:13px;margin-top:4px}
+.subnav{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.subnav a.chip.on{border-color:var(--acc);color:var(--acc)}
+.plot-card{padding:10px 10px 6px}
+.plot-card .plotly-graph-div{width:100%!important}
+.txt-card pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,"Cascadia Code",Consolas,monospace;
+  font-size:12.5px;line-height:1.5;color:#c5cddb;max-height:640px;overflow:auto;background:#0b0e13;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.pager{grid-column:1/-1;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pager a{display:inline-flex;flex-direction:column;gap:2px;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 16px;min-width:180px}
+.pager a:hover{border-color:#3a4558}
+.pager a small{color:var(--muted);font-size:12px}
+.pager a.next{text-align:right;margin-left:auto}
+</style>
+
+</head>
+<body>
+<nav class="stn-nav"><div class="stn-in"><a class="stn-brand" href="index.html">₿ <b>Southtyrolian</b> Nodes</a><a class="stn-lnk" href="index.html">Home</a><details class="stn-dd on"><summary>Nodes</summary><div class="stn-menu"><a href="nodes_data.html">Mempool</a><a href="nodes_data_2.html">Network</a><a href="nodes_data_3.html">Node Details</a><a href="mining_data.html">Mining</a><a href="hardware_data.html">Hardware</a><a href="hardware_data2.html">Hardware Plots</a><a href="databases_data.html">Databases</a></div></details><details class="stn-dd"><summary>Blockstats</summary><div class="stn-menu"><a href="getblockstats_data.html">Txs &amp; Fees</a><a href="getblockstats_data_2.html">SegWit</a><a href="getblockstats_data_3.html">Size &amp; Weight</a><a href="getblockstats_data_4.html">UTXO Set</a><a href="getblockstats_data_5.html">Tx Size</a><a href="getblockstats_data_6.html">Subsidy &amp; Tx Value</a><a href="getblockstats_data_7.html">Avg Tx Size</a><a href="getblockstats_data_8.html">Avg &amp; Median Fee</a><a href="getblockstats_data_9.html">Max &amp; Min Fee</a><a href="getblockstats_data_10.html">Avg Feerate</a><a href="getblockstats_data_11.html">Max &amp; Min Feerate</a><a href="getblockstats_data_12.html">Inputs &amp; Outputs</a></div></details><details class="stn-dd"><summary>UTXOs</summary><div class="stn-menu"><a href="utxos_data.html">URPD</a><a href="utxos_data_2.html">UTXO Metrics</a></div></details><details class="stn-dd"><summary>Bitcoin</summary><div class="stn-menu"><a href="btc_data_1.html">Price Action</a><a href="btc_data_2.html">Volume &amp; OBV</a></div></details><details class="stn-dd"><summary>Macro</summary><div class="stn-menu"><a href="fred_data.html">FED · Central Bank</a><a href="fred_data_2.html">FED · Debt &amp; Banks</a><a href="fred_data_3.html">FED · Economic Data</a><a href="fred_data_4.html">FED · Wealth Totals</a><a href="fred_data_5.html">FED · Wealth Assets</a><a href="fred_data_6.html">FED · Wealth Liabilities</a><a href="ecb_data_1.html">ECB · Central Bank</a><a href="ecb_data_2.html">ECB · GDP &amp; Debt</a><a href="ecb_data_3.html">ECB · Employment</a><a href="treasury_data.html">US Treasury</a><a href="economic_data.html">Commodities</a><a href="terna_data.html">Italian Power (Terna)</a></div></details><details class="stn-dd"><summary>Weather</summary><div class="stn-menu"><a href="meteo_data.html">3000 m Peaks</a><a href="meteo_data_2.html">Adige River Flow</a></div></details></div></nav>
+
+<div class="page-head"><div class="card">
+  <div>
+    <div class="crumb">Nodes</div>
+    <h1>Node Details</h1>
+    <div class="src">Data source: Southtyrolian Nodes (Stettiner &amp; Fanes full nodes)</div>
+    <div class="note">Raw RPC data of each node (addresses and proxies removed).</div>
+  </div>
+  <div class="stand" style="color:var(--muted)">Updated 04 Nov 2026 · 21:16 (UTC+01:00)</div>
+  <div class="subnav" style="flex-basis:100%"><a class="chip" href="nodes_data.html">Mempool</a><a class="chip" href="nodes_data_2.html">Network</a><a class="chip on" href="nodes_data_3.html">Node Details</a><a class="chip" href="mining_data.html">Mining</a><a class="chip" href="hardware_data.html">Hardware</a><a class="chip" href="hardware_data2.html">Hardware Plots</a><a class="chip" href="databases_data.html">Databases</a></div>
+</div></div>
+
+<main>
+<section class="card s4 txt-card"><h2>Nodus Tyrolensis Stettiner</h2><pre>{
+  &quot;name&quot;: &quot;Nodus Tyrolensis Stettiner&quot;,
+  &quot;blockcount&quot;: 974576,
+  &quot;connections&quot;: 33,
+  &quot;uptime&quot;: 659,
+  &quot;uptimenice&quot;: &quot;11d, 12h, 10m&quot;,
+  &quot;blockchain_info&quot;: {
+    &quot;chain&quot;: &quot;main&quot;,
+    &quot;blocks&quot;: 974576,
+    &quot;headers&quot;: 974576,
+    &quot;bestblockhash&quot;: &quot;000000000000000000010ba901e36269fe10de6592e0dd62c6b71ed4b7e1e2f6&quot;,
+    &quot;bits&quot;: &quot;1701e5ac&quot;,
+    &quot;target&quot;: &quot;00000000000000000001e5ac0000000000000000000000000000000000000000&quot;,
+    &quot;difficulty&quot;: 148364561003867.4,
+    &quot;time&quot;: 1793822087,
+    &quot;mediantime&quot;: 1793821045,
+    &quot;verificationprogress&quot;: 1,
+    &quot;initialblockdownload&quot;: false,
+    &quot;chainwork&quot;: &quot;000000000000000000000000000000000000000155bf521aff0ac6dd28819871&quot;,
+    &quot;size_on_disk&quot;: 890024707178,
+    &quot;pruned&quot;: false,
+    &quot;warnings&quot;: [],
+    &quot;blocks_found_in_last_24_hours&quot;: 145
+  },
+  &quot;mempoolinfo&quot;: {
+    &quot;loaded&quot;: true,
+    &quot;size&quot;: 47804,
+    &quot;bytes&quot;: 11766088,
+    &quot;usage&quot;: 79022648,
+    &quot;total_fee&quot;: 0.02745828,
+    &quot;maxmempool&quot;: 2000000000,
+    &quot;mempoolminfee&quot;: 1e-06,
+    &quot;minrelaytxfee&quot;: 1e-06,
+    &quot;incrementalrelayfee&quot;: 1e-06,
+    &quot;unbroadcastcount&quot;: 0,
+    &quot;fullrbf&quot;: true,
+    &quot;permitbaremultisig&quot;: true,
+    &quot;maxdatacarriersize&quot;: 83,
+    &quot;limitclustercount&quot;: 64,
+    &quot;limitclustersize&quot;: 101000,
+    &quot;optimal&quot;: true
+  },
+  &quot;getindexinfo&quot;: {
+    &quot;txindex&quot;: {
+      &quot;synced&quot;: true,
+      &quot;best_block_height&quot;: 974576
+    }
+  },
+  &quot;getnetworkinfo&quot;: {
+    &quot;version&quot;: 310100,
+    &quot;subversion&quot;: &quot;/Satoshi:31.1.0(Nodus Tyrolensis Stettiner)/&quot;,
+    &quot;protocolversion&quot;: 70016,
+    &quot;localservices&quot;: &quot;0000000000000c09&quot;,
+    &quot;localservicesnames&quot;: [
+      &quot;NETWORK&quot;,
+      &quot;WITNESS&quot;,
+      &quot;NETWORK_LIMITED&quot;,
+      &quot;P2P_V2&quot;
+    ],
+    &quot;localrelay&quot;: true,
+    &quot;timeoffset&quot;: 0,
+    &quot;networkactive&quot;: true,
+    &quot;connections&quot;: 33,
+    &quot;connections_in&quot;: 23,
+    &quot;connections_out&quot;: 10,
+    &quot;networks&quot;: [
+      {
+        &quot;name&quot;: &quot;ipv4&quot;,
+        &quot;limited&quot;: false,
+        &quot;reachable&quot;: true,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;ipv6&quot;,
+        &quot;limited&quot;: false,
+        &quot;reachable&quot;: true,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;onion&quot;,
+        &quot;limited&quot;: false,
+        &quot;reachable&quot;: true,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;i2p&quot;,
+        &quot;limited&quot;: true,
+        &quot;reachable&quot;: false,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: false
+      },
+      {
+        &quot;name&quot;: &quot;cjdns&quot;,
+        &quot;limited&quot;: true,
+        &quot;reachable&quot;: false,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: true
+      }
+    ],
+    &quot;relayfee&quot;: 1e-06,
+    &quot;incrementalfee&quot;: 1e-06,
+    &quot;localaddresses&quot;: &quot;[]&quot;,
+    &quot;warnings&quot;: []
+  },
+  &quot;getmemoryinfo&quot;: {
+    &quot;locked&quot;: {
+      &quot;used&quot;: 560,
+      &quot;free&quot;: 261584,
+      &quot;total&quot;: 262144,
+      &quot;locked&quot;: 262144,
+      &quot;chunks_used&quot;: 7,
+      &quot;chunks_free&quot;: 3
+    }
+  },
+  &quot;time&quot;: &quot;04.11.2026 - 20:02&quot;,
+  &quot;status&quot;: &quot;connected&quot;,
+  &quot;timestamp&quot;: 1793822559
+}</pre></section>
+<section class="card s4 txt-card"><h2>Nodus Tyrolensis Fanes</h2><pre>{
+  &quot;name&quot;: &quot;Nodus Tyrolensis Fanes&quot;,
+  &quot;blockcount&quot;: 974576,
+  &quot;connections&quot;: 27,
+  &quot;uptime&quot;: 3353,
+  &quot;uptimenice&quot;: &quot;4d, 14h, 55m&quot;,
+  &quot;blockchain_info&quot;: {
+    &quot;chain&quot;: &quot;main&quot;,
+    &quot;blocks&quot;: 974576,
+    &quot;headers&quot;: 974576,
+    &quot;bestblockhash&quot;: &quot;000000000000000000010ba901e36269fe10de6592e0dd62c6b71ed4b7e1e2f6&quot;,
+    &quot;bits&quot;: &quot;1701e5ac&quot;,
+    &quot;target&quot;: &quot;00000000000000000001e5ac0000000000000000000000000000000000000000&quot;,
+    &quot;difficulty&quot;: 148364561003867.4,
+    &quot;time&quot;: 1793822087,
+    &quot;mediantime&quot;: 1793821045,
+    &quot;verificationprogress&quot;: 1,
+    &quot;initialblockdownload&quot;: false,
+    &quot;chainwork&quot;: &quot;000000000000000000000000000000000000000155bf521aff0ac6dd28819871&quot;,
+    &quot;size_on_disk&quot;: 890042860247,
+    &quot;pruned&quot;: false,
+    &quot;warnings&quot;: [],
+    &quot;blocks_found_in_last_24_hours&quot;: 144
+  },
+  &quot;mempoolinfo&quot;: {
+    &quot;loaded&quot;: true,
+    &quot;size&quot;: 51379,
+    &quot;bytes&quot;: 12274167,
+    &quot;usage&quot;: 83115536,
+    &quot;total_fee&quot;: 0.02813775,
+    &quot;maxmempool&quot;: 2000000000,
+    &quot;mempoolminfee&quot;: 1e-06,
+    &quot;minrelaytxfee&quot;: 1e-06,
+    &quot;incrementalrelayfee&quot;: 1e-06,
+    &quot;unbroadcastcount&quot;: 0,
+    &quot;fullrbf&quot;: true,
+    &quot;permitbaremultisig&quot;: true,
+    &quot;maxdatacarriersize&quot;: 100000,
+    &quot;limitclustercount&quot;: 64,
+    &quot;limitclustersize&quot;: 101000,
+    &quot;optimal&quot;: true
+  },
+  &quot;getindexinfo&quot;: {
+    &quot;txindex&quot;: {
+      &quot;synced&quot;: true,
+      &quot;best_block_height&quot;: 974576
+    }
+  },
+  &quot;getnetworkinfo&quot;: {
+    &quot;version&quot;: 310100,
+    &quot;subversion&quot;: &quot;/Satoshi:31.1.0(Nodus Tyrolensis Fanes)/&quot;,
+    &quot;protocolversion&quot;: 70016,
+    &quot;localservices&quot;: &quot;0000000000000c09&quot;,
+    &quot;localservicesnames&quot;: [
+      &quot;NETWORK&quot;,
+      &quot;WITNESS&quot;,
+      &quot;NETWORK_LIMITED&quot;,
+      &quot;P2P_V2&quot;
+    ],
+    &quot;localrelay&quot;: true,
+    &quot;timeoffset&quot;: 0,
+    &quot;networkactive&quot;: true,
+    &quot;connections&quot;: 27,
+    &quot;connections_in&quot;: 17,
+    &quot;connections_out&quot;: 10,
+    &quot;networks&quot;: [
+      {
+        &quot;name&quot;: &quot;ipv4&quot;,
+        &quot;limited&quot;: false,
+        &quot;reachable&quot;: true,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;ipv6&quot;,
+        &quot;limited&quot;: false,
+        &quot;reachable&quot;: true,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;onion&quot;,
+        &quot;limited&quot;: false,
+        &quot;reachable&quot;: true,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: true
+      },
+      {
+        &quot;name&quot;: &quot;i2p&quot;,
+        &quot;limited&quot;: true,
+        &quot;reachable&quot;: false,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: false
+      },
+      {
+        &quot;name&quot;: &quot;cjdns&quot;,
+        &quot;limited&quot;: true,
+        &quot;reachable&quot;: false,
+        &quot;proxy&quot;: &quot;[]&quot;,
+        &quot;proxy_randomize_credentials&quot;: true
+      }
+    ],
+    &quot;relayfee&quot;: 1e-06,
+    &quot;incrementalfee&quot;: 1e-06,
+    &quot;localaddresses&quot;: &quot;[]&quot;,
+    &quot;warnings&quot;: []
+  },
+  &quot;getmemoryinfo&quot;: {
+    &quot;locked&quot;: {
+      &quot;used&quot;: 496,
+      &quot;free&quot;: 261648,
+      &quot;total&quot;: 262144,
+      &quot;locked&quot;: 262144,
+      &quot;chunks_used&quot;: 5,
+      &quot;chunks_free&quot;: 2
+    }
+  },
+  &quot;time&quot;: &quot;04.11.2026 - 20:02&quot;,
+  &quot;status&quot;: &quot;connected&quot;,
+  &quot;timestamp&quot;: 1793822567
+}</pre></section>
+<section class="card s4 txt-card"><h2>Nodus Tyrolensis Oberettes</h2><pre>{
+  &quot;name&quot;: &quot;Nodus Tyrolensis Oberettes&quot;,
+  &quot;blockcount&quot;: 0,
+  &quot;connections&quot;: 0,
+  &quot;uptime&quot;: &quot;Not reachable&quot;,
+  &quot;uptimenice&quot;: &quot;Not reachable&quot;,
+  &quot;blockchain_info&quot;: {
+    &quot;blocks_found_in_last_24_hours&quot;: &quot;144&quot;
+  },
+  &quot;mempoolinfo&quot;: {},
+  &quot;getindexinfo&quot;: {},
+  &quot;getnetworkinfo&quot;: {
+    &quot;subversion&quot;: &quot;Not reachable&quot;,
+    &quot;networks&quot;: [
+      {
+        &quot;name&quot;: &quot;unknown&quot;,
+        &quot;proxy&quot;: &quot;[]&quot;
+      },
+      {
+        &quot;name&quot;: &quot;unknown&quot;,
+        &quot;proxy&quot;: &quot;[]&quot;
+      },
+      {
+        &quot;name&quot;: &quot;unknown&quot;,
+        &quot;proxy&quot;: &quot;[]&quot;
+      },
+      {
+        &quot;name&quot;: &quot;unknown&quot;,
+        &quot;proxy&quot;: &quot;[]&quot;
+      },
+      {
+        &quot;name&quot;: &quot;unknown&quot;,
+        &quot;proxy&quot;: &quot;[]&quot;
+      }
+    ],
+    &quot;localaddresses&quot;: &quot;[]&quot;
+  },
+  &quot;getmemoryinfo&quot;: {},
+  &quot;time&quot;: &quot;04.11.2026 - 20:02&quot;,
+  &quot;status&quot;: &quot;unreachable&quot;,
+  &quot;timestamp&quot;: 1793822577
+}</pre></section>
+<div class="pager"><a href="nodes_data_2.html"><small>← Previous</small>Network</a><a class="next" href="mining_data.html"><small>Next →</small>Mining</a></div>
+</main>
+
+<footer>Southtyrolian Nodes · Nodus Tyrolensis Stettiner &amp; Fanes · Data generated automatically by the Southtyrolian Nodes Server</footer>
+
+<script>
+// close the other dropdowns when one opens, and all on outside click
+document.querySelectorAll('.stn-dd').forEach(function(d){
+  d.addEventListener('toggle',function(){
+    if(d.open){
+      document.querySelectorAll('.stn-dd').forEach(function(o){if(o!==d)o.open=false;});
+      var nav=document.querySelector('.stn-nav');
+      document.documentElement.style.setProperty('--navh',(nav.getBoundingClientRect().bottom+6)+'px');
+    }
+  });
+});
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.stn-dd')){document.querySelectorAll('.stn-dd').forEach(function(o){o.open=false;});}
+});
+</script>
+
+</body>
+</html>
